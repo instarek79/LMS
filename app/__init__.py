@@ -18,10 +18,10 @@ def register_app_config(app: Flask):
     f"sqlite:///{os.path.join(basedir,  'project.db')}"
 )
     app.config["SECRET_KEY"] = os.environ.get(
-        "SECRET_KEY", "pf9Wkove4IKEAXvy-cQkeDPhv9Cb3Ag-wyJILbq_dFw"
+        "SECRET_KEY", ""
     )
     app.config["SECURITY_PASSWORD_SALT"] = os.environ.get(
-        "SECURITY_PASSWORD_SALT", "146585145368132386173505678016728509634"
+        "SECURITY_PASSWORD_SALT", ""
     )
     app.config.from_prefixed_env(".env")
 
