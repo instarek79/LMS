@@ -1,0 +1,615 @@
+<p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">3.1 Introduction to Numpy</strong></p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">Welcome to our Python tutorial. Today, we're going to explore NumPy, a powerful library for numerical computations in Python. By the end of this tutorial, you'll have a solid understanding of NumPy dimensions, shape, size, and more. Let's dive in!</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">NumPy, short for Numerical Python, is a library that provides support for large multidimensional arrays and matrices, along with a collection of mathematical functions to operate on them. To start using NumPy, you'll need to import it:</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Example:</strong></p><pre style="-webkit-text-stroke-width:0px;background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;orphans:2;overflow:auto;padding:1em;tab-size:4;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:pre-wrap;widows:2;word-spacing:0px;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;">import numpy as np</code></pre><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">3.1.1 NumPy Dimensions</strong><br><br>NumPy arrays can have any number of dimensions. The dimensions of an array are known as axes. Let's create a few arrays with different dimensions.</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Example:</strong></p><pre style="-webkit-text-stroke-width:0px;background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;orphans:2;overflow:auto;padding:1em;tab-size:4;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:pre-wrap;widows:2;word-spacing:0px;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;"># 1D array
+
+arr_1d = np.array([1, 2, 3, 4, 5])
+
+print(arr_1d)
+
+
+
+# 2D array
+
+arr_2d = np.array([[1, 2, 3], [4, 5, 6]])
+
+print(arr_2d)
+
+
+
+# 3D array
+
+arr_3d = np.array([[[1, 2], [3, 4]], [[5, 6], [7, 8]]])
+
+print(arr_3d)</code></pre><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">How would you create a 4D array?&nbsp;</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">You can create a 4D array by nesting more lists inside each other.</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">array_4d = np.array([[[[<span class="hljs-number" style="box-sizing:border-box;">1</span>, <span class="hljs-number" style="box-sizing:border-box;">2</span>], [<span class="hljs-number" style="box-sizing:border-box;">3</span>, <span class="hljs-number" style="box-sizing:border-box;">4</span>]], [[<span class="hljs-number" style="box-sizing:border-box;">5</span>, <span class="hljs-number" style="box-sizing:border-box;">6</span>], [<span class="hljs-number" style="box-sizing:border-box;">7</span>, <span class="hljs-number" style="box-sizing:border-box;">8</span>]]], [[[<span class="hljs-number" style="box-sizing:border-box;">9</span>, <span class="hljs-number" style="box-sizing:border-box;">10</span>], [<span class="hljs-number" style="box-sizing:border-box;">11</span>, <span class="hljs-number" style="box-sizing:border-box;">12</span>]], [[<span class="hljs-number" style="box-sizing:border-box;">13</span>, <span class="hljs-number" style="box-sizing:border-box;">14</span>], [<span class="hljs-number" style="box-sizing:border-box;">15</span>, <span class="hljs-number" style="box-sizing:border-box;">16</span>]]]])</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">3.2 NumPy Shape, Size, and Bytes</strong><br><br>Understanding the shape, size, and memory consumption of arrays is crucial. The shape attribute returns the dimensions of an array, size returns the number of elements, and nbytes returns the total bytes consumed by the elements of the array.</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Example:</strong></p><pre style="-webkit-text-stroke-width:0px;background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;orphans:2;overflow:auto;padding:1em;tab-size:4;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:pre-wrap;widows:2;word-spacing:0px;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;">arr = np.array([[1, 2, 3], [4, 5, 6]])
+
+print("Shape:", arr.shape)  # Output: (2, 3)
+
+print("Size:", arr.size)    # Output: 6
+
+print("Bytes:", arr.nbytes) # Output: 48 (8 bytes per int, 6 elements)</code></pre><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">If you have an array of shape (3, 4), how many elements does it contain?&nbsp;<br><strong style="box-sizing:border-box;font-weight:bolder;">Yes It contains 12 elements (3 * 4).</strong></p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">&nbsp;</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">3.3 NumPy Arange and Random</strong><br>NumPy provides functions to create arrays with specific patterns. <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">arange</code> creates arrays with regularly incrementing values, and <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">random</code> generates arrays with random values.</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Example</strong>:</p><pre style="-webkit-text-stroke-width:0px;background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;orphans:2;overflow:auto;padding:1em;tab-size:4;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:pre-wrap;widows:2;word-spacing:0px;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;"># Using arange
+
+arr = np.arange(10)
+
+print(arr)  # Output: [0 1 2 3 4 5 6 7 8 9]
+
+
+
+# Using random
+
+arr_random = np.random.random((2, 3))
+
+
+print(arr_random) 
+# Output [[0.54756241 0.1638707  0.81937921] 
+
+ [0.13981286 0.44945545 0.41437793]]
+</code></pre><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">The <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">arange</code> function is similar to Python's built-in <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">range</code> function but returns an array instead of a list. The <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">random</code> module in NumPy offers various functions to generate random numbers. Here, <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">random.random((2, 3))</code> creates a 2x3 array of random floats between 0 and 1.</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">What will <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">np.arange(5, 15, 2)</code> output?&nbsp;</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">It will output Numpy array from numbers 5 to 15 with step equal 2 </strong><code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;"><strong style="box-sizing:border-box;font-weight:bolder;">[ 5 7 9 11 13]</strong></code><strong style="box-sizing:border-box;font-weight:bolder;">.</strong></p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">3.4 NumPy Reshape</strong></p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">The <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">reshape</code> function in NumPy is used to give a new shape to an array without changing its data. The new shape should be compatible with the original shape of the array. This function is quite useful when you need to transform the dimensions of your data for various operations such as matrix multiplications, neural network input preparation, etc.</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">3.4.1 Reshape 1d to 2d &nbsp;</strong></p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">Let's start with a simple example where we reshape a 1D array into a 2D array.</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Example:</strong></p><pre style="-webkit-text-stroke-width:0px;background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;orphans:2;overflow:auto;padding:1em;tab-size:4;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:pre-wrap;widows:2;word-spacing:0px;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;"># Creating a 1D array of 12 elements
+
+a = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
+
+print("Original array:")
+
+print(a)
+
+
+
+# Reshaping to a 2D array with 3 rows and 4 columns
+
+b = a.reshape((3, 4))
+
+print("\nReshaped array (3x4):")
+
+print(b)
+
+"""output
+Original array:
+[ 1  2  3  4  5  6  7  8  9 10 11 12]
+
+Reshaped array (3x4):
+[[ 1  2  3  4]
+ [ 5  6  7  8]
+ [ 9 10 11 12]] """
+ </code></pre><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">The reshape method is useful for converting a flat array into a multidimensional array. Remember, the new shape must be compatible with the original shape; the total number of elements must stay the same.</p><h4 style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:1.5rem;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:500;letter-spacing:normal;line-height:1.2;margin-bottom:0.5rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><span style="font-size:18px;"><span style="box-sizing:border-box;"><strong style="box-sizing:border-box;font-weight:bolder;">3.4.2 Reshape with -1</strong></span></span></h4><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">Using <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">-1</code> in the <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">newshape</code> argument allows NumPy to automatically calculate the dimension.</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Example:</strong></p><pre style="-webkit-text-stroke-width:0px;background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;orphans:2;overflow:auto;padding:1em;tab-size:4;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:pre-wrap;widows:2;word-spacing:0px;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;"># Reshaping to a 2D array with 2 rows and automatically calculated columns
+
+c = a.reshape((2, -1))
+
+print("\nReshaped array (2x-1):")
+
+print(c)
+""" output
+Reshaped array (2x-1):
+[[ 1  2  3  4  5  6]
+ [ 7  8  9 10 11 12]]
+ """</code></pre><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">In this example, <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">-1</code> tells NumPy to automatically determine the number of columns, which results in 6 columns since the original array has 12 elements.</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">3.4.3 Reshaping a 3D Array</strong></p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">You can also reshape higher-dimensional arrays.</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Example:</strong></p><div class="dark bg-gray-950 rounded-md border-[0.5px] border-token-border-medium" style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><pre style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;overflow:auto;padding:1em;tab-size:4;text-align:left;white-space:pre-wrap;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;"># Creating a 3D array of shape (2, 3, 2)
+
+d = np.array([[[ 1,  2], [ 3,  4], [ 5,  6]],
+
+              [[ 7,  8], [ 9, 10], [11, 12]]])
+
+print("Original 3D array:")
+
+print(d)
+
+
+
+# Reshaping to a 2D array with 2 rows and 6 columns
+
+e = d.reshape((2, 6))
+
+print("\nReshaped to 2D array (2x6):")
+
+print(e)
+
+
+
+# Reshaping to a 1D array
+
+f = d.reshape((12,))
+
+print("\nReshaped to 1D array:")
+
+print(f)
+
+
+""" output
+Original 3D array:
+[[[ 1  2]
+  [ 3  4]
+  [ 5  6]]
+
+ [[ 7  8]
+  [ 9 10]
+  [11 12]]]
+
+Reshaped to 2D array (2x6):
+[[ 1  2  3  4  5  6]
+ [ 7  8  9 10 11 12]]
+
+Reshaped to 1D array:
+[ 1  2  3  4  5  6  7  8  9 10 11 12]
+"""</code></pre></div><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">In this case, the original 3D array of shape (2, 3, 2) is reshaped into a 2D array of shape (2, 6) and then into a 1D array of shape (12,).</p><h3 style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:1.75rem;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:500;letter-spacing:normal;line-height:1.2;margin-bottom:0.5rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">Important Points to Note</h3><ol style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;list-style-type:decimal;margin-bottom:1rem;margin-top:0px;orphans:2;padding-left:2rem;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><li style="box-sizing:border-box;"><p style="text-align:justify;"><strong style="box-sizing:border-box;font-weight:bolder;">Compatibility:</strong> The total number of elements in the reshaped array must match the original number of elements. If the original array has 12 elements, the reshaped array must also contain 12 elements.</p></li><li style="box-sizing:border-box;"><p style="text-align:justify;"><strong style="box-sizing:border-box;font-weight:bolder;">Automatic Dimension Calculation:</strong> Using <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">-1</code> in one of the dimensions allows NumPy to automatically calculate the size of that dimension.</p></li><li style="box-sizing:border-box;"><p style="text-align:justify;"><strong style="box-sizing:border-box;font-weight:bolder;">Order Parameter:</strong> You can specify the order of reading the elements using the <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">order</code> parameter:</p><ul style="box-sizing:border-box;list-style-type:disc;margin-bottom:0px;margin-top:0px;padding-left:2rem;"><li style="box-sizing:border-box;"><p style="text-align:justify;"><code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">'C'</code>: Row-major (C-style) order.</p></li><li style="box-sizing:border-box;"><p style="text-align:justify;"><code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">'F'</code>: Column-major (Fortran-style) order.</p></li><li style="box-sizing:border-box;"><p style="text-align:justify;"><code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">'A'</code>: Fortran-style if the array is Fortran contiguous in memory, C-style otherwise.</p></li><li style="box-sizing:border-box;"><p style="text-align:justify;"><code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">'K'</code>: As close to the order the elements appear in memory as possible.</p></li></ul></li></ol><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Example:</strong></p><pre style="-webkit-text-stroke-width:0px;background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;orphans:2;overflow:auto;padding:1em;tab-size:4;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:pre-wrap;widows:2;word-spacing:0px;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;"># Example of order parameter
+
+g = np.arange(12).reshape((3, 4), order='F')
+
+print("\nReshaped array with Fortran order (3x4):")
+
+print(g)
+
+""" output 
+Reshaped array with Fortran order (3x4):
+[[ 0  3  6  9]
+ [ 1  4  7 10]
+ [ 2  5  8 11]]
+ """</code></pre><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">In this example, the elements are read in column-major order.</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">Understanding and using reshape effectively can significantly enhance your ability to manipulate and process data in NumPy.</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">&nbsp;Can you reshape an array of shape (6,) to (2, 4)?&nbsp;</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">No, because the total number of elements would change (6 elements cannot be reshaped into an array with 8 elements).</strong></p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Next we will dicuss Numpy Slicing</strong></p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">3.5 Numpy Slicing</strong></p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">Slicing in NumPy allows you to access specific parts of an array. Slicing is a powerful feature that helps you manipulate and retrieve data from arrays efficiently.</p><pre style="-webkit-text-stroke-width:0px;background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;orphans:2;overflow:auto;padding:1em;tab-size:4;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:pre-wrap;widows:2;word-spacing:0px;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;">array[start:stop:step]</code></pre><ul style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;list-style-type:disc;margin-bottom:1rem;margin-top:0px;orphans:2;padding-left:2rem;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><li style="box-sizing:border-box;"><p style="text-align:justify;"><code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">start</code>: The starting index of the slice. Defaults to <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">0</code> if not provided.</p></li><li style="box-sizing:border-box;"><p style="text-align:justify;"><code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">stop</code>: The ending index of the slice (exclusive).</p></li><li style="box-sizing:border-box;"><p style="text-align:justify;"><code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">step</code>: The step size between each index. Defaults to <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">1</code> if not provided</p></li></ul><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">3.5.1 &nbsp;Slicing a 1D Array</strong><br>Let's start with a simple 1D array.</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Example:</strong></p><pre style="-webkit-text-stroke-width:0px;background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;orphans:2;overflow:auto;padding:1em;tab-size:4;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:pre-wrap;widows:2;word-spacing:0px;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;"># Creating a 1D array
+a = np.array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+print("Original array:")
+print(a)
+
+# Slicing from index 2 to 5
+print("\nSliced array from index 2 to 5:")
+print(a[2:6])  # Output: [2 3 4 5]
+
+# Slicing with a step of 2
+print("\nSliced array from index 0 to 9 with a step of 2:")
+print(a[0:10:2])  # Output: [0 2 4 6 8]
+"""output
+
+Original array:
+[0 1 2 3 4 5 6 7 8 9]
+
+Sliced array from index 2 to 5:
+[2 3 4 5]
+
+Sliced array from index 0 to 9 with a step of 2:
+[0 2 4 6 8]
+
+"""</code></pre><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">3.5.2 Slicing a 2D Array</strong></p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">Slicing becomes even more useful when dealing with multi-dimensional arrays.</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Example:</strong></p><pre style="-webkit-text-stroke-width:0px;background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;orphans:2;overflow:auto;padding:1em;tab-size:4;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:pre-wrap;widows:2;word-spacing:0px;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;"># Creating a 2D array
+
+b = np.array([[ 0,  1,  2,  3],
+
+              [ 4,  5,  6,  7],
+
+              [ 8,  9, 10, 11],
+
+              [12, 13, 14, 15]])
+
+print("Original 2D array:")
+
+print(b)
+
+
+
+# Slicing the first two rows and first three columns
+
+print("\nSliced array (first two rows, first three columns):")
+
+print(b[0:2, 0:3])  # Output: [[0 1 2]
+
+                     #          [4 5 6]]
+
+
+
+# Slicing the last two rows
+
+print("\nSliced array (last two rows):")
+
+print(b[2:, :])  # Output: [[ 8  9 10 11]
+
+                 #          [12 13 14 15]]
+
+
+
+# Slicing the last two columns
+
+print("\nSliced array (last two columns):")
+
+print(b[:, 2:])  # Output: [[ 2  3]
+
+                 #          [ 6  7]
+
+                 #          [10 11]
+
+                 #          [14 15]]
+
+""" Output
+Original 2D array:
+[[ 0  1  2  3]
+ [ 4  5  6  7]
+ [ 8  9 10 11]
+ [12 13 14 15]]
+
+Sliced array (first two rows, first three columns):
+[[0 1 2]
+ [4 5 6]]
+
+Sliced array (last two rows):
+[[ 8  9 10 11]
+ [12 13 14 15]]
+
+Sliced array (last two columns):
+[[ 2  3]
+ [ 6  7]
+ [10 11]
+ [14 15]]
+
+"""</code></pre><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">3.5.3 Using Negative Indices</strong><br>Negative indices count from the end of the array.</p><pre style="-webkit-text-stroke-width:0px;background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;orphans:2;overflow:auto;padding:1em;tab-size:4;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:pre-wrap;widows:2;word-spacing:0px;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;"># Slicing using negative indices
+
+print("\nSliced array (last row):")
+
+print(b[-1, :])  # Output: [12 13 14 15]
+
+
+
+# Slicing using negative step
+
+print("\nSliced array (reversed order):")
+
+print(a[::-1])  # Output: [9 8 7 6 5 4 3 2 1 0]
+
+
+""" Output
+Sliced array (last row):
+
+[12 13 14 15]
+
+Sliced array (reversed order):
+
+[9 8 7 6 5 4 3 2 1 0]
+
+"""</code></pre><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">3.5.4 Advanced Slicing</strong></p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">You can combine slicing with conditional statements and multiple dimensions.</p><pre style="-webkit-text-stroke-width:0px;background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;orphans:2;overflow:auto;padding:1em;tab-size:4;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:pre-wrap;widows:2;word-spacing:0px;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;"> # Creating a 3D array
+
+c = np.array([[[ 0,  1,  2],
+
+               [ 3,  4,  5]],
+
+              
+
+              [[ 6,  7,  8],
+
+               [ 9, 10, 11]]])
+
+print("Original 3D array:")
+
+print(c)
+
+
+
+# Slicing the first two elements of the first dimension and all elements of the other dimensions
+
+print("\nSliced 3D array (first two elements of the first dimension):")
+
+print(c[:2, :, :]) 
+
+""" Output: Original 3D array:
+[[[ 0  1  2]
+  [ 3  4  5]]
+ [[ 6  7  8]
+  [ 9 10 11]]]
+
+Sliced 3D array (first two elements of the first dimension):
+[[[ 0  1  2]
+  [ 3  4  5]]
+ [[ 6  7  8]
+  [ 9 10 11]]] """</code></pre><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">3.6 NumPy Masking</strong></p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">NumPy masking allows you to select and manipulate elements of an array based on conditions. A mask is a boolean array that specifies which elements of the original array meet the given condition. This is useful for tasks like filtering data, replacing values, and performing operations on specific elements.</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Basic Syntax</strong><br>Masking typically involves creating a boolean array (mask) based on a condition and then using this mask to index the original array.</p><pre style="-webkit-text-stroke-width:0px;background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;orphans:2;overflow:auto;padding:1em;tab-size:4;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:pre-wrap;widows:2;word-spacing:0px;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;">masked_array = array[condition]</code></pre><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">3.6.1 Simple Masking with 1D Arrays</strong></p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">Let's start with a simple example of masking a 1D array.</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Example:</strong></p><pre style="-webkit-text-stroke-width:0px;background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;orphans:2;overflow:auto;padding:1em;tab-size:4;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:pre-wrap;widows:2;word-spacing:0px;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;"># Creating a 1D array
+
+a = np.array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+
+print("Original array:")
+
+print(a)
+
+
+
+# Creating a mask to select elements greater than 5
+
+mask = a &gt; 5
+
+print("\nMask (elements &gt; 5):")
+
+print(mask)
+
+
+
+# Applying the mask to the array
+
+masked_array = a[mask]
+
+print("\nMasked array (elements &gt; 5):")
+
+print(masked_array)
+
+""" Output
+Original array:
+[0 1 2 3 4 5 6 7 8 9]
+
+Mask (elements &gt; 5):
+[False False False False False False  True  True  True  True]
+
+Masked array (elements &gt; 5):
+[6 7 8 9]
+"""</code></pre><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">&nbsp;3.6.2 Masking with 2D Arrays</strong><br>Masking can be extended to multi-dimensional arrays.</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Example:</strong></p><pre style="-webkit-text-stroke-width:0px;background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;orphans:2;overflow:auto;padding:1em;tab-size:4;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:pre-wrap;widows:2;word-spacing:0px;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;"># Creating a 2D array
+
+b = np.array([[ 0,  1,  2,  3],
+
+              [ 4,  5,  6,  7],
+
+              [ 8,  9, 10, 11],
+
+              [12, 13, 14, 15]])
+
+print("\nOriginal 2D array:")
+
+print(b)
+
+
+
+# Creating a mask to select elements greater than 8
+
+mask = b &gt; 8
+
+print("\n Mask (elements &gt; 8):")
+
+print(mask)
+
+
+
+# Applying the mask to the array
+
+masked_array = b[mask]
+
+print("\nMasked array (elements &gt; 8):")
+
+print(masked_array)
+
+""" Output
+Original 2D array:
+[[ 0  1  2  3]
+ [ 4  5  6  7]
+ [ 8  9 10 11]
+ [12 13 14 15]]
+
+Mask (elements &gt; 8):
+[[False False False False]
+ [False False False False]
+ [False  True  True  True]
+ [ True  True  True  True]]
+
+Masked array (elements &gt; 8):
+[ 9 10 11 12 13 14 15]
+
+"""</code></pre><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">3.6.3 Combining Masks</strong><br>You can combine multiple conditions to create complex masks.</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Example:</strong></p><pre style="-webkit-text-stroke-width:0px;background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;orphans:2;overflow:auto;padding:1em;tab-size:4;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:pre-wrap;widows:2;word-spacing:0px;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;"># Creating a mask for elements greater than 5 and less than 12
+
+combined_mask = (b &gt; 5) &amp; (b &lt; 12)
+
+print("\nCombined mask (5 &lt; elements &lt; 12):")
+
+print(combined_mask)
+
+
+
+# Applying the combined mask to the array
+
+masked_array_combined = b[combined_mask]
+
+print("\nMasked array (5 &lt; elements &lt; 12):")
+
+print(masked_array_combined)
+
+
+""" Output
+Combined mask (5 &lt; elements &lt; 12):
+[[False False False False]
+ [False False  True  True]
+ [ True  True  True False]
+ [False False False False]]
+
+Masked array (5 &lt; elements &lt; 12):
+[ 6  7  8  9 10 11]
+
+"""</code></pre><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">3.6.4 Modifying Values Using Masks</strong></p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">You can also modify elements in an array using a mask.</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Example:</strong></p><div class="dark bg-gray-950 rounded-md border-[0.5px] border-token-border-medium" style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><pre style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;overflow:auto;padding:1em;tab-size:4;text-align:left;white-space:pre-wrap;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;"># Setting elements greater than 10 to 0
+
+b[b &gt; 10] = 0
+
+print("\nModified array (elements &gt; 10 set to 0):")
+
+print(b)
+
+""" Output
+Modified array (elements &gt; 10 set to 0):
+
+[[ 0  1  2  3]
+
+ [ 4  5  6  7]
+
+ [ 8  9 10  0]
+
+ [ 0  0  0  0]]
+
+"""</code></pre><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">3.6.5 Masking with NaN Values</strong><br>Masking is also useful for handling NaN (Not a Number) values in arrays.</p><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Example:&nbsp;</strong></p><pre style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;overflow:auto;padding:1em;tab-size:4;text-align:left;white-space:pre-wrap;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;"># Creating an array with NaN values
+
+c = np.array([1, 2, np.nan, 4, 5, np.nan, 7])
+
+print("\nOriginal array with NaN values:")
+
+print(c)
+
+
+
+# Creating a mask to select non-NaN elements
+
+mask = ~np.isnan(c)
+
+print("\nMask (non-NaN elements):")
+
+print(mask)
+
+
+
+# Applying the mask to the array
+
+masked_array_nan = c[mask]
+
+print("\nMasked array (non-NaN elements):")
+
+print(masked_array_nan)
+
+
+""" Output
+Original array with NaN values:
+[ 1.  2. nan  4.  5. nan  7.]
+
+Mask (non-NaN elements):
+[ True  True False  True  True False  True]
+
+Masked array (non-NaN elements):
+[1. 2. 4. 5. 7.]
+"""</code></pre><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;">NumPy masking provides a flexible and powerful way to work with arrays, making it easier to perform conditional operations and data manipulation tasks efficiently.In the next topic we will focus <strong style="box-sizing:border-box;font-weight:bolder;">NumPy BroadCasting and Concatination</strong></p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">3.7 NumPy BroadCasting and Concatination</strong></p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">3.7.1</strong> <strong style="box-sizing:border-box;font-weight:bolder;">NumPy&nbsp; Broadcasting</strong><br>Broadcasting in NumPy refers to the ability to perform arithmetic operations on arrays of different shapes. It automatically expands the smaller array's dimensions to match the larger array's dimensions, without actually copying the data.</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">Basic Broadcasting Rules:<br>If the arrays do not have the same rank, prepend the shape of the smaller array with ones until both shapes have the same length.<br>Arrays are compatible for broadcasting if, for each dimension, the dimension sizes of the arrays are either equal or one of them is 1.<br>If these conditions are not met, a ValueError is thrown.<br><strong style="box-sizing:border-box;font-weight:bolder;">Broadcasting a Scalar</strong></p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">Broadcasting a scalar (1d array) to an array.</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Example :</strong></p><pre style="-webkit-text-stroke-width:0px;background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;orphans:2;overflow:auto;padding:1em;tab-size:4;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:pre-wrap;widows:2;word-spacing:0px;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;"># Creating an array
+
+a = np.array([1, 2, 3])
+
+print("Original array:")
+
+print(a)
+
+
+
+# Broadcasting a scalar value to the array
+
+b = a + 5
+
+print("\nArray after broadcasting a scalar value 5:")
+
+print(b)
+
+
+""" Output
+Original array:
+[1 2 3]
+
+Array after broadcasting a scalar value 5:
+[6 7 8]
+"""</code></pre><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">&nbsp;</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Broadcasting with Different Dimensions</strong></p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">Broadcasting a 1D array to a 2D array.</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Example:</strong></p><div class="dark bg-gray-950 rounded-md border-[0.5px] border-token-border-medium" style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><pre style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;overflow:auto;padding:1em;tab-size:4;text-align:left;white-space:pre-wrap;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;"># Creating a 2D array
+
+a = np.array([[1, 2, 3],
+
+              [4, 5, 6]])
+
+print("\nOriginal 2D array:")
+
+print(a)
+
+
+
+# Creating a 1D array
+
+b = np.array([10, 20, 30])
+
+print("\nOriginal 1D array:")
+
+print(b)
+
+
+
+# Broadcasting the 1D array to the 2D array
+
+c = a + b
+
+print("\nArray after broadcasting:")
+
+print(c)
+""" Output
+Original 2D array:
+[[1 2 3]
+ [4 5 6]]
+Original 1D array:
+[10 20 30]
+Array after broadcasting:
+[[11 22 33]
+ [14 25 36]]
+"""</code></pre><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;">In this example, the 1D array <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">b</code> is broadcasted to match the shape of the 2D array <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">a</code>.</p><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">3.7.2 Concatenation</strong></p><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Concatenation</strong> in NumPy refers to joining two or more arrays along an existing axis.</p><pre style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;overflow:auto;padding:1em;tab-size:4;text-align:left;white-space:pre-wrap;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;">numpy.concatenate((array1, array2, ...), axis=0)</code></pre><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Concatenating 1D Arrays</strong></p><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Example:</strong></p><pre style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;overflow:auto;padding:1em;tab-size:4;text-align:left;white-space:pre-wrap;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;"># Creating two 1D arrays
+
+a = np.array([1, 2, 3])
+
+b = np.array([4, 5, 6])
+
+print("\nOriginal arrays:")
+
+print("Array a:", a)
+
+print("Array b:", b)
+
+
+
+# Concatenating along axis 0
+
+c = np.concatenate((a, b))
+
+print("\nConcatenated array along axis 0:")
+
+print(c)
+
+
+"""Output
+Original arrays:
+Array a: [1 2 3]
+Array b: [4 5 6]
+
+Concatenated array along axis 0:
+[1 2 3 4 5 6]
+
+"""</code></pre><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Concatenating 2D Arrays</strong></p><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Example:</strong></p><pre style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;overflow:auto;padding:1em;tab-size:4;text-align:left;white-space:pre-wrap;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;"># Creating two 2D arrays
+
+a = np.array([[1, 2],
+
+              [3, 4]])
+
+b = np.array([[5, 6],
+
+              [7, 8]])
+
+print("\nOriginal 2D arrays:")
+
+print("Array a:")
+
+print(a)
+
+print("Array b:")
+
+print(b)
+
+
+
+# Concatenating along axis 0 (vertical stacking)
+
+c = np.concatenate((a, b), axis=0)
+
+print("\nConcatenated array along axis 0:")
+
+print(c)
+
+
+
+# Concatenating along axis 1 (horizontal stacking)
+
+d = np.concatenate((a, b), axis=1)
+
+print("\nConcatenated array along axis 1:")
+
+print(d)
+
+"""Output 
+Original 2D arrays:
+Array a:
+[[1 2]
+ [3 4]]
+Array b:
+[[5 6]
+ [7 8]]
+
+Concatenated array along axis 0:
+[[1 2]
+ [3 4]
+ [5 6]
+ [7 8]]
+
+Concatenated array along axis 1:
+[[1 2 5 6]
+ [3 4 7 8]] """</code></pre><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;">In this example, <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">a</code> and <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">b</code> are concatenated along both axes, demonstrating vertical and horizontal stacking.</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">3.8 &nbsp; Numpy Review Conclusion</strong></p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">We've covered : introduction to NumPy, dimensions, shape, size, arange, random, reshaping, slicing, masking, broadcasting, concatenation, and ufuncs speed test. I hope this has been helpful and engaging. If you have any questions, feel free to leave them in the comments below.</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">&nbsp;</p><ol style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;list-style-type:decimal;margin-bottom:1rem;margin-top:0px;orphans:2;padding-left:2rem;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><li style="box-sizing:border-box;"><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;text-align:justify;"><strong style="box-sizing:border-box;font-weight:bolder;">Question</strong>: Given a 1D NumPy array <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">a = np.array([1, 2, 3, 4, 5, 6])</code>, reshape it into a 2D array with 2 rows and 3 columns. What is the resulting array?</p><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;text-align:justify;"><strong style="box-sizing:border-box;font-weight:bolder;">Answer</strong>: <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">a.reshape((2, 3))</code><br>Result: <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">[[1, 2, 3], [4, 5, 6]]</code></p></li><li style="box-sizing:border-box;"><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;text-align:justify;"><strong style="box-sizing:border-box;font-weight:bolder;">Question</strong>: What is the shape of the array after reshaping a 1D array of 12 elements into a 3D array with dimensions (2, 3, 2)?</p><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;text-align:justify;"><strong style="box-sizing:border-box;font-weight:bolder;">Answer</strong>: The shape is <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">(2, 3, 2)</code>.</p></li><li style="box-sizing:border-box;"><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;text-align:justify;"><strong style="box-sizing:border-box;font-weight:bolder;">Question</strong>: Given a 2D NumPy array <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">b = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])</code>, slice out the subarray consisting of the last two rows and the first two columns. What is the resulting array?</p><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;text-align:justify;"><strong style="box-sizing:border-box;font-weight:bolder;">Answer</strong>: <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">b[1:, :2]</code><br>Result: <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">[[4, 5], [7, 8]]</code></p></li><li style="box-sizing:border-box;"><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;text-align:justify;"><strong style="box-sizing:border-box;font-weight:bolder;">Question</strong>: How do you reverse the order of elements in a 1D array <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">a = np.array([10, 20, 30, 40, 50])</code> using slicing?</p><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;text-align:justify;"><strong style="box-sizing:border-box;font-weight:bolder;">Answer</strong>: <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">a[::-1]</code><br>Result: <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">[50, 40, 30, 20, 10]</code></p></li><li style="box-sizing:border-box;"><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;text-align:justify;"><strong style="box-sizing:border-box;font-weight:bolder;">Question</strong>: Given a NumPy array <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">c = np.array([3, 7, 2, 9, 1, 6])</code>, create a mask to select elements greater than 5 and apply it. What is the resulting array?</p><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;text-align:justify;"><strong style="box-sizing:border-box;font-weight:bolder;">Answer</strong>: <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">c[c &gt; 5]</code><br>Result: <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">[7, 9, 6]</code></p></li><li style="box-sizing:border-box;"><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;text-align:justify;"><strong style="box-sizing:border-box;font-weight:bolder;">Question</strong>: How do you replace all negative values in a NumPy array <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">d = np.array([-1, 2, -3, 4, -5])</code> with zero using masking?</p><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;text-align:justify;"><strong style="box-sizing:border-box;font-weight:bolder;">Answer</strong>: <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">d[d &lt; 0] = 0</code><br>Result: <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">[0, 2, 0, 4, 0]</code></p></li><li style="box-sizing:border-box;"><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;text-align:justify;"><strong style="box-sizing:border-box;font-weight:bolder;">Question</strong>: Given a 2D array <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">e = np.array([[1, 2], [3, 4]])</code> and a 1D array <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">f = np.array([10, 20])</code>, use broadcasting to add the 1D array to each row of the 2D array. What is the resulting array?</p><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;text-align:justify;"><strong style="box-sizing:border-box;font-weight:bolder;">Answer</strong>: <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">e + f</code><br>Result: <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">[[11, 22], [13, 24]]</code></p></li><li style="box-sizing:border-box;"><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;text-align:justify;"><strong style="box-sizing:border-box;font-weight:bolder;">Question</strong>: If you have a scalar value <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">5</code> and you want to add it to every element of a 3D array <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">g = np.array([[[1, 2], [3, 4]], [[5, 6], [7, 8]]])</code>, what will the resulting array look like?</p><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;text-align:justify;"><strong style="box-sizing:border-box;font-weight:bolder;">Answer</strong>: <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">g + 5</code><br>Result: <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">[[[ 6, 7], [ 8, 9]], [[10, 11], [12, 13]]]</code></p></li><li style="box-sizing:border-box;"><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;text-align:justify;"><strong style="box-sizing:border-box;font-weight:bolder;">Question</strong>: Given two 1D arrays <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">h = np.array([1, 2, 3])</code> and <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">i = np.array([4, 5, 6])</code>, concatenate them along the default axis. What is the resulting array?</p><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;text-align:justify;"><strong style="box-sizing:border-box;font-weight:bolder;">Answer</strong>: <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">np.concatenate((h, i))</code><br>Result: <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">[1, 2, 3, 4, 5, 6]</code></p></li><li style="box-sizing:border-box;"><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;text-align:justify;"><strong style="box-sizing:border-box;font-weight:bolder;">Question</strong>: Given two 2D arrays <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">j = np.array([[1, 2], [3, 4]])</code> and <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">k = np.array([[5, 6], [7, 8]])</code>, concatenate them along axis 1. What is the resulting array?</p><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;text-align:justify;"><strong style="box-sizing:border-box;font-weight:bolder;">Answer</strong>: <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">np.concatenate((j, k), axis=1)</code><br>Result: <code style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;box-sizing:border-box;color:var(--bs-code-color);font-family:var(--bs-font-monospace);font-size:0.875em;overflow-wrap:break-word;padding:0.15em;">[[1, 2, 5, 6], [3, 4, 7, 8]]</code></p></li></ol></div></div>

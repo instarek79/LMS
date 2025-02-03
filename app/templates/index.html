@@ -1,0 +1,45 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+Home
+{% endblock %}
+{% block headscript %}
+
+{% endblock %}
+
+{% block main %}
+
+<div class="container-fluid p-0">
+    <div class="container-fluid px-5 border-warning bg-secondary-subtle shadow-sm border-bottom border-5 ">
+        <div class="row align-items-center justify-content-start h-100">
+            <div class="col-6 text-start  fw-bold d-flex align-items-center flex-column  ">
+                <div class="w-50 p-0" id="text_1">
+                    <div class="h2">
+                        Artificial Intelligence
+                    </div>
+                    <div class=" text-muted text-center">
+                        Empower Your Future with AI!
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-6 carousel text-center ">
+                <img src="{{url_for('static',filename='img/cloud.png')}}" class=" img-fluid w-50" id="img_1">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid mt-5  ">
+        <div class=" row justify-content-center gap-4 px-5 overflow-x-auto px-5 ">
+
+            <div class="col-md-3 col-12 p-2 ">
+
+
+            </div>
+        </div>
+
+
+    </div>
+    {% endblock %}

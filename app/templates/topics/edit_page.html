@@ -1,0 +1,94 @@
+
+{% extends 'base/base.html' %}
+
+{% block headscript %}
+<link rel="stylesheet" href="/topics/static/css/style.css">
+<link rel="stylesheet" href="/topics/static/ckeditor5/ckeditor5.css">    
+{% endblock %}
+{% block main %}
+<h1 class=" text-center">
+    Edit Document
+</h1>
+<form id="asd" method="post">
+
+    <div>
+        <div class="main-container">
+            <div class="editor-container editor-container_document-editor" id="editor-container">
+                <div class="editor-container__menu-bar" id="editor-menu-bar"></div>
+                <div class="editor-container__toolbar" id="editor-toolbar"></div>
+                <div class="editor-container__editor-wrapper">
+                    <div class="editor-container__editor">
+                        <div id="editor">
+                            {% include 'docs/'+page+'.html'  %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="importmap">
+    {
+        "imports": {
+            "ckeditor5": "/topics/static/ckeditor5/ckeditor5.js",
+            "ckeditor5/": "/topics/static/ckeditor5/"
+        }
+    }
+    </script>
+    <script type="module" src="/topics/static/js/main.js"></script>
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6">
+
+                <div class="mb-3">
+                    <input type="hidden" class="form-control"  name="domain" value="{{page.split('/')[-3]}}" id="domain" />
+                       
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <input type="hidden" class="form-control"  name="topic" value="{{page.split('/')[-2]}}" id="topic" />
+
+                </div>
+                <div class="mb-3">
+                    
+                    <input type="hidden" class="form-control"  name="name" value="{{page.split('/')[-1].split('.html')[0]}}" id="name" />
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="d-flex justify-content-center mt-3">
+        <button type="submit" class="btn btn-primary">
+            Submit
+        </button>
+    </div>
+
+</form>
+<script>
+    $(document).ready(function () {
+        $('#asd').submit(function (e) {
+            e.preventDefault();
+            const domEditableElement = document.querySelector('.ck-editor__editable_inline');
+
+            // Get the editor instance from the editable element.
+            const editorInstance = domEditableElement.ckeditorInstance;
+            data = $('#asd').serializeArray()
+            data.push({ name: 'ckeditor', value: editorInstance.getData() });
+            $.ajax({
+                type: "POST",
+                url: "",
+                data: $.param(data),
+                dataType: "dataType",
+                success: function (response) {
+                    alert('Succesful')
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}
+
+    

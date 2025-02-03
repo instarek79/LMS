@@ -1,0 +1,61 @@
+{% macro render_field(field) %}
+
+
+{% if field.type in ['StringField','EmailField','PasswordField',FileField] %}
+{{ field.label(class='form-label mb-0') }}
+{% if field.errors %}
+{{ field(class='form-control mb-2 is-invalid',**kwargs)|safe }}
+<div class="invalid-feedback">
+  {% for error in field.errors %}
+  {{ error }}
+  {% endfor %}
+</div>
+{% else %}
+{{ field(class='form-control mb-2',**kwargs)|safe }}
+{% endif %}
+
+{% elif field.type in ['SelectField'] %}
+{{ field.label(class='form-label mb-0') }}
+{% if field.errors %}
+{{ field(class='form-select mb-2 is-invalid',**kwargs)|safe }}
+<div class="invalid-feedback">
+  {% for error in field.errors %}
+  {{ error }}
+  {% endfor %}
+</div>
+{% else %}
+{{ field(class='form-select mb-2',**kwargs)|safe }}
+{% endif %}
+
+{% elif field.type in ['SubmitField'] %}
+<div class="row justify-content-center">
+  {{ field(class='btn btn-warning form-control mb-2 w-50 ',**kwargs)|safe }}
+</div>
+{% else%}
+{{field}}
+{% endif %}
+
+
+
+{% endmacro %}
+
+
+
+
+
+
+
+{% macro render_form(form,cols=2) %}
+
+<div class="row justify-content-between">
+  {% for field in form %}
+  {% if field.type not in ['SubmitField'] %}
+  <div class="col-12 col-md-{{ (12/cols) | int }}">
+    {{render_field(field)}}
+  </div>
+  {% else %}
+</div>
+  {{render_field(field)}}
+{% endif %}
+{% endfor %}
+{% endmacro %}

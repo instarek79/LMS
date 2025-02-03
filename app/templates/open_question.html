@@ -1,0 +1,98 @@
+{% extends 'base/base.html' %}
+{% block title %}
+Home
+{% endblock %}
+{% block headscript %}
+<script>
+    $(document).ready(function () {
+        $.get("/api/questions", null,
+            function (data, textStatus, jqXHR) {
+
+            },
+            "json"
+        );
+    });
+</script>
+{% endblock %}
+
+{% block main %}
+<div class="container-fluid p-0 bg-light  vh-100">
+
+    <form action="" method="post">
+     
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8    text-center  my-3 bg-white shadow-sm">
+           
+                {% if data.interaction_type=='choice' %}
+                <div class="display-4">
+                    {{data.title}}
+                </div>
+                <div class="fs-4">
+                    {{data.description}}
+                </div>
+                <div class="fs-4 p-4">
+                    {% for item in data.options %}
+                    <div class="mb-3 row  justify-content-center">
+                        <div class="col-1 border border-dark rounded-3">
+                            {{loop.index}}
+                        </div>
+                        <div class="col-8">
+                            <div class="d-grid gap-2">
+                                <input class="btn-check" type="checkbox" name="options" value="{{item.text}}"
+                                    id="an_{{loop.index}}" />
+                                <label class="btn btn-outline-warning text-black border-black " for="an_{{loop.index}}"> {{item.text}} </label>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn btn-warning">
+                            Submit
+                        </button>
+
+                    </div>
+                </div>
+                {% else %}
+                <div class="display-4">
+                    {{data.title}}
+                </div>
+                <div class="fs-4">
+                    {{data.description}}
+                </div>
+
+                <div class="fs-4 p-4">
+                    {% for item in data.options %}
+                    <div class="mb-3 row  justify-content-center">
+                        <div class="col-1 border border-dark rounded-3">
+                            {{loop.index}}
+                        </div>
+                        <div class="col-8">
+                            <div class="d-grid gap-2">
+                                <input type="text" class="form-control border-dark" name="options">
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <!-- <input type="hidden"  name="id" value="{{data.id}}"> -->
+
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn btn-warning">
+                            Submit
+                        </button>
+
+                    </div>
+                </div>
+                {% endif %}
+
+            </div>
+
+        </div>
+    </form>
+
+
+
+
+</div>
+
+{% endblock %}

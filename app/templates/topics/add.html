@@ -1,0 +1,129 @@
+{% extends 'base/base.html' %}
+
+{% block headscript %}
+
+<link rel="stylesheet" href="/topics/static/css/style.css">
+<link rel="stylesheet" href="/topics/static/ckeditor5/ckeditor5.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />
+<link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.full.min.js"></script>
+<script>
+
+</script>
+{% endblock %}
+
+
+
+{% block main %}
+<div class="container-xxl bg-white">
+
+    <h1 class=" text-center">
+        Create A New Document
+    </h1>
+    <form id="asd" method="post">
+
+        <div>
+            <div class="main-container ">
+                <div class="editor-container editor-container_document-editor" id="editor-container">
+                    <div class="editor-container__menu-bar" id="editor-menu-bar"></div>
+                    <div class="editor-container__toolbar" id="editor-toolbar"></div>
+                    <div class="editor-container__editor-wrapper">
+                        <div class="editor-container__editor">
+                            <div id="editor"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="importmap">
+    {
+        "imports": {
+            "ckeditor5": "/topics/static/ckeditor5/ckeditor5.js",
+            "ckeditor5/": "/topics/static/ckeditor5/"
+        }
+    }
+    </script>
+        <script type="module" src="/topics/static/js/main.js"></script>
+
+        <div class="container">
+
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-6">
+
+                    <div class="mb-3">
+                        <label for="domain" class="form-label">Courses</label>
+                        <select class="form-select " name="domain" id="domain" required>
+                            <option selected value="" disabled>Select one</option>
+                            {% for domain in domains %}
+                            <option value="{{domain.name}}">{{domain.name}}</option>
+                            {% endfor %}
+
+
+                        </select>
+                    </div>
+                    <!-- <div class="mb-3">
+                        <div class="form-label">
+                            Lessons List
+                        </div>
+                        <select multiple class="form-select">
+                            {% for domain in domains %}
+                            <optgroup label="{{domain.name}}">
+                                {% for topic in domain.topics %}
+                                <option value="{{topic.name}}">
+                                    {{topic.name}}
+                                </option>
+                                {% endfor %}
+                            </optgroup>
+                            {% endfor %}
+                        </select>
+                    </div> -->
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" name="topic" id="topic" />
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="d-flex justify-content-center mt-3">
+            <button type="submit" class="btn btn-primary">
+                Submit
+            </button>
+        </div>
+
+    </form>
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        $('#asd').submit(function (e) {
+            e.preventDefault();
+            const domEditableElement = document.querySelector('.ck-editor__editable_inline');
+
+            // Get the editor instance from the editable element.
+            const editorInstance = domEditableElement.ckeditorInstance;
+            data = $('#asd').serializeArray()
+            data.push({ name: 'ckeditor', value: editorInstance.getData() });
+            $.ajax({
+                type: "POST",
+                url: "",
+                data: $.param(data),
+                success: (response) => {
+                    location.reload();
+                },
+                error: function (response) {
+                    alert('error');
+                }
+            });
+        });
+    });
+</script>
+
+{% endblock %}

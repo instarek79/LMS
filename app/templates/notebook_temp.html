@@ -1,0 +1,120 @@
+{% extends 'base/base.html' %}
+{% block title %}
+{{notebook_name}}
+{% endblock %}
+{% block headscript %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+{% endblock %}
+
+
+{% block header %}
+
+{% endblock %}
+
+{% block main %}
+<div class="container-fluid">
+    <div class="row justify-content-center ">
+        {% set slide_num = 0 %}
+        {% for cell in notebook_data['cells'] %}
+
+        {% if cell['cell_type']== 'markdown' %}
+        <div class="col-12 col-md-10 bg-white rounded-3 m-3  shadow border border-5 border-warning-subtle p-5" name="Slide_{{slide_num}}">
+            {% for line in cell['source'] %}
+            {% markdown %}
+            {% if "attachment:" in line %}
+            {% set image = line.split("attachment:")[1].split(')')[0] %}
+            <div class="d-flex px-5 justify-content-center">
+                <img src="data:{{cell['attachments'][image].keys() | first}};base64,{{cell['attachments'][image].values() |first}}"
+                alt="{{image}}" class="img-fluid" style="max-height: 300px;">
+            </div>
+            {%else%}
+            {{line}}
+            {% endif %}
+            {% endmarkdown %}
+            {% endfor %}
+            {% if loop.index < (notebook_data['cells'] | length) and notebook_data['cells'][loop.index]['cell_type']=='code' %}
+            <div class="h3">
+                Code:
+            </div>
+            <pre class=" ">
+<code class="language-python border">
+{% for line in notebook_data['cells'][loop.index]['source'] -%}
+{{line.replace('\n','')}}
+{% endfor %}
+</code>
+</pre>
+            {% if notebook_data['cells'][loop.index]['outputs'] %}
+
+
+            <div class="h3">
+                Output:
+            </div>
+            <div class="container bg-light border pt-3 overflow-x-auto" >
+
+                {% for cell2 in notebook_data['cells'][loop.index]['outputs'] -%}
+                {% if 'display_data' == cell2['output_type'] %}
+                <img src="data:image/jpeg;base64,{{cell2['data']['image/png']}}" class="img-fluid" style="max-height: 300px;">
+
+                {% for texts in cell2['text/plain'] -%}
+                <p>{{texts}}</p>
+                {% endfor %}
+                {% elif 'stream' == cell2['output_type'] %}
+{% if cell2['text'][0] %}
+<pre>
+{% for texts in cell2['text'] -%}
+{{texts.replace('\n','')}}
+{% endfor %}
+</pre>
+{%endif%}
+                {% elif 'error' == cell2['output_type'] %}
+                <pre class="text-danger">
+                {% for item in cell2['traceback'] -%}
+               {{item }}
+                {% endfor %}
+                </pre>
+                {% elif 'execute_result' == cell2['output_type'] %}
+                {% for item in cell2['data']['text/html'] %}
+                        {{item | safe}}
+
+                {% endfor %}
+                {% else %}
+                <p>CANNOT FIND ANY OUTPUT</p>
+                {% endif %}
+                {% endfor %}
+
+            </div>
+            {% endif %}
+            {% endif %}
+
+        </div>
+        {% endif %}
+        {% set slide_num = slide_num + 1 %}
+        {% endfor %}
+    </div>
+
+
+
+</div>
+
+
+{% endblock %}
+
+{% block footer %}
+<script>hljs.highlightAll();</script>
+<script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$']],
+            displayMath: [['$$', '$$']]
+        }
+    };
+    
+</script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base/base.html' %}
+{% block title %}
+Home
+{% endblock %}
+{% block headscript %}
+<script>
+    $(document).ready(function () {
+        $.get("/api/questions", null,
+            function (data, textStatus, jqXHR) {
+                console.log(data);
+                $.each(data, function (indexInArray, question) {
+                    $('#question_container').append(`
+                    <a href="/question/${question.id}" class="px-3 py-2" style="text-decoration: none;">
+                    <div class="container  fs-5  text-center  bg-white shadow-sm">
+                    Title: ${question.title}<br>
+                    Type: ${question.interaction_type}<br>
+                        </div>
+                    </a>
+                `);
+                });
+            },
+            "json"
+        );
+    });
+</script>
+{% endblock %}
+
+{% block main %}
+<div class="container-fluid p-0 bg-light  vh-100">
+
+
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8  display-4  text-center  my-3 bg-white shadow-sm">
+            Choose Question
+        </div>
+
+    </div>
+
+
+
+    <div class="container-fluid p-5">
+        <div  class="row row-cols-1 row-cols-md-3 g-3 " id="question_container">
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

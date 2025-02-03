@@ -1,0 +1,83 @@
+{% extends 'base/base.html' %}
+{% block title %}
+Home
+{% endblock %}
+{% block headscript %}
+<style>
+    ::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    ::-webkit-scrollbar-track {
+        border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: 4px;
+        background-color: orange;
+    }
+
+    .form-control::placeholder {
+        opacity: 0.6;
+    }
+
+    .form-floating label {
+        opacity: 0.5;
+    }
+    .my_hover:hover{
+        background-color: rgb(250, 206, 125)!important;
+    }
+</style>
+
+<script src="/static/js/create_quiz.js"></script>
+{% endblock %}
+
+{% block main %}
+<div class="container-fluid p-0   ">
+
+    <form id="form_id">
+
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 px-5   my-3 bg-white shadow-sm">
+
+                <div class="text-center display-3">Create Quiz</div>
+
+            </div>
+            <div class="col-12 col-md-6     bg-white shadow-sm">
+                <div class="my-3 mx-3">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control rounded-0 border-warning focus-ring focus-ring-warning"
+                            name="formId1" id="formId1" placeholder="" />
+                        <label for="formId1">Quiz Name</label>
+                    </div>
+                    <div id="questions_cont"  style="max-height: 400px; overflow-y: auto; ">
+
+                    </div>
+                    <div class="list-group rounded-0 mt-3">
+                        <a class="list-group-item  border-warning list-group-item-action bg-warning-subtle text-center my_hover"
+                            data-bs-toggle="collapse" href="#collapseExample"aria-expanded="false">Add
+                            a question</a>
+                        <div id="collapseExample" class="collapse" >
+                            {% for question in questions %}
+                            <a name="question_choice" question_id="{{question.id}}"
+                                class="list-group-item border-warning list-group-item-action">{{question.title}}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end mt-3">
+                        <button class="btn btn-warning" type="Button"> submit</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </form>
+
+
+
+
+</div>
+
+{% endblock %}

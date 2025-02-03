@@ -1,0 +1,13 @@
+{% extends 'admin/base.html' %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-6 ">
+            {% if plot1 %}
+            {{plot1 | safe}}
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

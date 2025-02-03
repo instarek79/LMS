@@ -1,0 +1,23 @@
+{% extends 'admin/master.html' %}
+{% block head_css %}
+    {{super()}}
+{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 ">
+            <form action="" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="csv_file">Upload a CSV Document for Students using the format from this link <a href="{{url_for('static', filename='AdditionalFiles/student_template.csv')}}">Here</a> </label>
+                    <input type="file" name="csv_file" class="form-control">
+                </div>
+                <div class="form-group ">
+                    <input type="submit" class="btn btn-primary" value="Upload">
+                </div>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base/base.html' %}
+{% block title %}
+Courses
+{% endblock %}
+{% block headscript %}
+
+{% endblock %}
+
+{% block main %}
+<div class="row justify-content-center pt-3">
+    <div class="col-12 col-md-8">
+        <div class="h1 text-center">
+            Your Courses
+        </div>
+        {% if current_user.role=="student" and not current_user.courses %}
+        <div class="h1 text-center text-danger">
+            You don't have any registered courses!
+        </div>
+        {% elif current_user.role=="professor" and not current_user.managed_courses %}
+        <div class="h1 text-center text-danger">
+            You don't have any Managed courses!<br>
+            you can create new ones in the management tab
+        </div>
+        {% endif %}
+    </div>
+</div>
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-4 ">
+        {% if current_user.role=="student" or current_user.role=="professor" %}
+
+        {% for course in current_user.courses %}
+        <div class="col mb-4">
+            <div class="card h-100 ">
+
+                <div class="card-body h-100">
+                    <h5 class="card-title text-center text-truncate">{{course.name}}</h5>
+                    <img src="{{course.image}}" class="card-img-top" alt="..." style="height: 250px;">
+                    <p class="card-text">{{course.description}}</p>
+
+                </div>
+                <div class="card-footer d-flex  justify-content-end align-items-end border-0">
+
+                    <a href="{{url_for('topics.home', domain=course.name)}}" class="btn btn-warning">Go to course</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+
+    </div>
+    {% endblock %}

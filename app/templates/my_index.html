@@ -1,0 +1,71 @@
+{% extends 'base/base.html' %}
+{% block title %}
+Quiz: {{quiz.name}}
+{% endblock %}
+{% block headscript %}
+
+{% endblock %}
+
+{% block main %}
+<div class="row justify-content-center pt-3">
+    <div class="h1 text-center">
+        {{quiz.name}}
+    </div>
+    <div class="col-12 col-md-8">
+        <div class=" mb-3 h3">
+            Time left: <span id="time_left" class="text-danger">30</span> minutes
+        </div>
+    </div>
+   
+    <div class="col-12 col-md-8 rounded-3 border border-warning border-5 min-vh-100  bg-light">
+        <div class="text-end mb-3">
+            Total Marks from this Quiz: <strong>{{quiz.marks}}</strong>
+        </div>
+       
+        <div class="mb-3 h3">
+            Choose the correct Answer:
+        </div>
+        <form id="quiz_form" method="post">
+            {% for question in quiz.questions %}
+            <div class="mb-3 border p-3 rounded-3 bg-white shadow-sm">
+                <div class="h5 border-bottom">{{loop.index}}. {{question.question.text}}</div>
+                
+                <div class="form-check d-flex align-items-center ">
+                    <input class="form-check-input mt-0 " type="radio" value="1" name="correct_option_{{loop.index}}"
+                        required>
+                    <label class="form-check-label ps-2" >
+                        {{question.question.option_1}}
+                    </label>
+                </div>
+                <div class="form-check d-flex align-items-center">
+                    <input class="form-check-input mt-0 " type="radio" value="2" name="correct_option_{{loop.index}}"
+                        required>
+                    <label class="form-check-label ps-2" >
+                        {{question.question.option_2}}
+                    </label>
+                </div>
+                <div class="form-check d-flex align-items-center">
+                    <input class="form-check-input mt-0 " type="radio" value="3" name="correct_option_{{loop.index}}"
+                        required>
+                    <label class="form-check-label ps-2" >
+                        {{question.question.option_3}}
+                    </label>
+                </div>
+                <div class="form-check d-flex align-items-center">
+                    <input class="form-check-input mt-0 " type="radio" value="4" name="correct_option_{{loop.index}}"
+                        required>
+                    <label class="form-check-label ps-2" >
+                        {{question.question.option_4}}
+                    </label>
+                </div>
+                
+            </div>
+            {% endfor %}
+            <input type="hidden" name="quiz_id" value="{{quiz.id}}">
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-warning">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,696 @@
+{% extends 'base/base.html' %}
+{% block title %}
+{{domain}}
+{% endblock %}
+{% block header %}
+{{super()}}
+
+
+
+
+
+{% endblock %}
+{% block headscript %}
+<!-- <style>
+    .mycol-2 {
+        width: 20%;
+    }
+
+    .mycol-10 {
+        width: 80%;
+    }
+</style> -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+
+
+
+
+<!-- Bootstrap core CSS -->
+<script async charset="utf-8" src="//cdn.embedly.com/widgets/platform.js"></script>
+
+<!-- Custom styles for this template -->
+<link href="{{ url_for('topics.static', filename='custom/sidebars.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="{{url_for('topics.static',filename='ckeditor5/ckeditor5.css')}}">
+<link rel="stylesheet" href="{{url_for('topics.static',filename='css/style.css')}}">
+<style>
+    /* width */
+    #document_view_container::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    /* Track */
+    #document_view_container::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    /* Handle */
+    #document_view_container::-webkit-scrollbar-thumb {
+        background: orange;
+        border-radius: 5rem;
+
+    }
+
+    /* Handle on hover */
+    #document_view_container::-webkit-scrollbar-thumb:hover {
+        background: rgb(211, 137, 0);
+    }
+</style>
+<script>
+    function update_comments() {
+$.ajax({
+    type: "GET",
+    url: `/api/topics/comments?topic_id=${topic_id}`,
+    data: "",
+    dataType: "json",
+    contentType:"application/json",
+    success: function (comments) {
+        $('#comments_section').empty();
+        $.each(comments, function (indexInArray, response) {
+            $('#comments_section').append(`
+            
+            <div class="col-11 p-2 bg-white rounded-2 shadow-sm mb-3 ">
+                        <div class="d-flex justify-content-between border-bottom mb-2">
+                            <span class="h4 ">${response.author_name}</span> <br>
+                            <span style="font-size: small;">${response.date_posted}</span>
+                        </div>
+                        <div class="ck-content">
+                            ${response.text }
+                        </div>
+                    </div>`); 
+             
+        });
+        
+    }
+});
+    }
+    function scaleTextSizes(containerSelector, scaleFactor) {
+        // Get the container and its child elements
+        var $container = $(containerSelector);
+        var $elements = $container.find('*'); // Select all child elements
+
+        // Store initial font sizes
+        var initialSizes = [];
+        $elements.each(function (index) {
+            var fontSize = parseFloat($(this).css('font-size'));
+            initialSizes.push({ element: $(this), fontSize: fontSize });
+        });
+
+        // Scale font sizes
+        initialSizes.forEach(function (item) {
+            var newSize = item.fontSize * scaleFactor;
+            item.element.css('font-size', newSize + 'px');
+        });
+    }
+    function toggleFullscreen(element) {
+        $(element).addClass('fullscreen'); // Toggle a CSS class for fullscreen styling
+        scaleTextSizes('#document_view', 2);
+
+        // If entering fullscreen
+        $(element).css({
+            'position': 'fixed',
+            'top': '0',
+            'left': '0',
+            'width': '100%',
+            'height': '100%',
+            'z-index': '9999',
+            'overflow': 'auto',
+            'background-color': '#fff' // Optional: Set background color
+        });
+
+
+        if (!document.fullscreenElement &&    // alternative standard method
+            !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) {  // current working methods
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen();
+            } else if (document.documentElement.msRequestFullscreen) {
+                document.documentElement.msRequestFullscreen();
+            } else if (document.documentElement.mozRequestFullScreen) {
+                document.documentElement.mozRequestFullScreen();
+            } else if (document.documentElement.webkitRequestFullscreen) {
+                document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+            }
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+            } else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            }
+        }
+    }
+    $(document).on('fullscreenchange webkitfullscreenchange mozfullscreenchange MSFullscreenChange', function () {
+        if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.mozFullScreenElement && !document.msFullscreenElement) {
+            // Exit full screen logic here
+            scaleTextSizes('#document_view', 0.5);
+            $('#document_view').removeClass('fullscreen')
+            $($('#document_view')).css({
+                'position': '', // Revert to default positioning
+                'top': '',
+                'left': '',
+                'width': '',
+                'height': '',
+                'z-index': '',
+                'background-color': '' // Clear background color
+            });
+        }
+    });
+
+    var delete_name;
+    var algorithm_to_delete;
+    let lessons = [{% for chapter in chapters %}
+    '{{chapter.name}}',
+        {% endfor %}];
+
+    $(document).ready(function () {
+        var project_view = false;
+        var project = null;
+        {% if chapters%}
+        topic_id = {{ chapters[0].id }} ;
+        {% else %}
+        topic_id=0;
+        {% endif %}
+    nav_height = $('nav').css('height');
+    // nav_height = '0px';
+    $(document).on('click', "#show_pp", function () {
+
+        project_view = !project_view;
+        if (project_view) {
+            $('#document_view').html('');
+            $('#document_view').append(
+                `<iframe src="/courses/load_project_slides/${project.trim()}" frameborder="0" width='100%' style="height:calc(100vh - 70px);"></iframe>`
+            )
+        }
+        else {
+            $('#document_view').html('');
+            $('#document_view').append(
+                `<iframe src="/courses/load_projects/${project.trim()}" frameborder="0" width='100%' style="height:calc(100vh - 70px);"></iframe>`
+            )
+        }
+    });
+    $('#sidebar_right_id').css("min-height", `calc(100vh - ${nav_height}`);
+    $('#sidebar_id').css({
+        height: `calc(100vh - ${nav_height})`
+
+    });
+    $('#document_view_container').css({
+        height: `calc(100vh - ${nav_height})`
+
+    });
+    // alert(nav_height);
+    $(document).on('click', "[name='show_btn_proj']", function () {
+        $('#show_pp').hide();
+
+        // element == this
+        $("[name='show_btn']").removeClass('active');
+        $("[name='show_quiz']").removeClass('active');
+        $("[name='show_btn_proj']").removeClass('active');
+        // element == this
+
+
+        $(this).addClass('active');
+
+        $('#document_view').html('');
+        link = $(this).attr('to');
+        $('#document_view').height('auto');
+        if ($(this).attr('project') == 'true') {
+            $('#show_pp').show();
+            project = $(this).text();
+            if (project_view) {
+                $('#document_view').html('');
+                $('#document_view').append(
+                    `<iframe src="/courses/load_project_slides/${project.trim()}" frameborder="0" width='100%' style="height:calc(100vh - 70px);"></iframe>`
+                )
+            }
+            else {
+                $('#document_view').html('');
+                $('#document_view').append(
+                    `<iframe src="/courses/load_projects/${project.trim()}" frameborder="0" width='100%' style="height:calc(100vh - 70px);"></iframe>`
+                )
+            }
+        }
+        else {
+            $('#document_view').append(
+                `<iframe src="${link}" frameborder="0" width='100%' style="height:calc(100vh - 70px);"></iframe>`
+            )
+        }
+
+    });
+    $(document).on('click', "[name='show_quiz']", function () {
+        $('#show_pp').hide();
+        $("[name='show_btn']").each(function (index, element) {
+            // element == this
+            $(this).removeClass('active');
+        });
+        $("[name='show_btn_proj']").each(function (index, element) {
+            // element == this
+            $(this).removeClass('active');
+        });
+        $("[name='show_quiz']").each(function (index, element) {
+            // element == this
+            $(this).removeClass('active');
+        });
+        $(this).addClass('active');
+        $('#document_view').empty();
+        link = $(this).attr('to');
+
+    });
+
+    $(document).on('click', ".close-algorithm", function (e) {
+        algorithm_to_delete = $(this).attr('to');
+        $('#delete_name2').text(algorithm_to_delete);
+    });
+    $(document).on('click', "[name='show_btn']", function (e) {
+        lesson_name = $(this).attr('to') == undefined ? $(this).attr('chapter') : $(this).attr('to');
+      
+        $('#show_pp').hide();
+        $('.added_later').remove();
+        if ($(this).attr('algorithm') == 'true')
+            $('#other_breadcrumbs').append(`<li class="breadcrumb-item active added_later"> ${$(this).text()} </li>`);
+        else
+            $('#other_breadcrumbs').append(`<li class="breadcrumb-item active added_later"> ${lesson_name} </li>`);
+
+        e.preventDefault();
+        $("[name='show_btn_proj']").each(function (index, element) {
+            // element == this
+            $(this).removeClass('active');
+        });
+        $("[name='show_btn']").each(function (index, element) {
+            // element == this
+            $(this).removeClass('active');
+        });
+        $("[name='show_quiz']").removeClass('active');
+
+        index = lessons.indexOf(lesson_name);
+        $("[name='show_btn']").eq(index).addClass('active');
+        // console.log($("[name='show_btn']").eq(index + 1).text());
+        $(this).addClass('active');
+        $('#document_view').empty();
+        $('#document_view').show();
+        topic_id = $("[name='show_btn'].active").attr('topic_id');
+        update_comments();
+        if ($(this).attr('to') != undefined)
+            if ($(this).attr('algorithm') == "true") {
+                go_to_path = encodeURI($(this).attr('to'));
+            }
+            else {
+                go_to_path = `{{url_for('topics.get_docs',lesson_name='')}}/${encodeURI($(this).attr('to'))}`;
+            }
+        else {
+
+            go_to_path = `{{url_for('topics.get_docs',lesson_name='')}}${encodeURI($(this).attr('chapter'))}?domain={{domain|urlencode}}`;
+
+
+        }
+
+        $('#document_view').load(go_to_path, function (response, status, request) {
+            this; // dom element
+
+            hljs.highlightAll();
+            index = lessons.indexOf(lesson_name);
+            if (index > 0 && index < lessons.length - 1) {
+                nextItem = lessons[index + 1];
+                prevItem = lessons[index - 1];
+                $(`<div class="d-flex justify-content-between "  >
+                        <a class="icon-link  fs-6 text-center text-decoration-none" name="show_btn" type="button"  chapter="${prevItem}">
+                               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+</svg> Prev: ${prevItem}
+                               
+                              </a>
+                        <a class="icon-link fs-6 text-center text-decoration-none" name="show_btn" type="button" chapter="${nextItem}">
+                                Next: ${nextItem}
+
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+                                  </svg>
+                              </a></div>`).appendTo('#document_view');
+            }
+            else if (index == lessons.length - 1) {
+                nextItem = lessons[index - 1];
+                $(`
+                    <div class="d-flex justify-content-start" >
+                        <a class="icon-link fs-6 text-decoration-none" name="show_btn" type="button"  chapter="${nextItem}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+</svg> Prev: ${nextItem} 
+                              </a></div>`).appendTo('#document_view');
+            } else if (index == 0) {
+                nextItem = lessons[1];
+                $(`<div class="d-flex justify-content-end ">
+                        <a class="icon-link fs-6 text-decoration-none" name="show_btn" type="button"  chapter="${nextItem}">
+                                Next: ${nextItem}
+                               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+                                  </svg>
+                              </a> </div>`).appendTo('#document_view');
+            }
+
+
+        });
+
+
+
+
+        // $.ajax({
+        //     type: "GET",
+        //     url: `/api/quizzes/${lesson_name}`,
+        //     data: {},
+        //     contentType: "json",
+        //     success: function (response) {
+        //         $('#quizes_list').empty();
+        //         $.each(response, function (indexInArray, Element) {
+        //             $('#quizes_list').append(
+        //                 `  <li class="">
+        //                     <a   to="/questions/view-quiz/${Element.id}"  name="show_quiz"
+        //                     class="btn btn-outline-warning text-start border-0 text-dark p-1 w-100 mb-1 "
+        //                     style="font-size: medium;"> ${Element.name}</a>
+        //                         </li>`
+        //             );
+        //         });
+        //     }
+        // });
+
+
+    });
+
+    $(".toggle_side_left").click(function (e) {
+        e.preventDefault();
+        $("#sidebar_id").animate({ width: 'toggle' }, 350, function () {
+            $('#sidebar_id').toggleClass('d-md-block');
+            $('#sidebar_id').toggle();
+            $('#show_left').toggleClass('d-none');
+        });
+        //
+
+    });
+
+    $(".toggle_side_right").click(function (e) {
+        // e.preventDefault();
+        $("#sidebar_right_id").animate({ width: 'toggle' }, 350, function () {
+            $('#sidebar_right_id').toggleClass('d-md-block');
+            $('#show_right').toggleClass('d-none');
+        });
+        //
+
+    });
+
+    $(document).on('click', "[name='delete_btn']", function () {
+        delete_name = $(this).attr('lesson');
+        $('#delete_name').text(delete_name);
+    });
+
+    $(document).on('click', "#delete_confirm", function () {
+        myModal = $('#exampleModal')
+        myModal.hide();
+        $.ajax({
+            type: 'POST',
+            url: `/courses/delete_lesson/${delete_name}`,
+            success: function (response) {
+                location.reload();
+            }
+        });
+        $('body').removeClass('modal-open');
+        $('.modal-backdrop').remove();
+    });
+    $(document).on('click', "#delete_confirm2", function () {
+        myModal = $('#exampleModal2')
+        myModal.hide();
+        $.ajax({
+            type: 'POST',
+            url: `/courses/delete_algorithms/${algorithm_to_delete}`,
+            success: function (response) {
+                location.reload();
+            }
+        });
+        $('body').removeClass('modal-open');
+        $('.modal-backdrop').remove();
+    });
+
+    $(document).on('click', "#add_comment", function () {
+        const domEditableElement = document.querySelector('.ck-editor__editable_inline');
+        // Get the editor instance from the editable element.
+        const editorInstance = domEditableElement.ckeditorInstance;
+
+        data = editorInstance.getData();
+        $.ajax({
+            type: "POST",
+            url: "/api/topics/comments?" + $.param({ topic_id: topic_id }),
+            data: JSON.stringify({ comment: data }),
+            dataType: "json",
+            contentType: "application/json",
+
+            success: function (response) {
+                update_comments();
+                editorInstance.setData('');
+            }
+        }).always(function () { get_flash(); });
+
+    });
+
+    $('#fullscreen').click(function (e) {
+        toggleFullscreen($('#document_view'));
+
+    });
+    $(document).on("click","#clear_comm_btn",function (e) { 
+        e.preventDefault();
+        $.ajax({
+            type: "DELETE",
+            url: "/api/topics/comments?" + $.param({ topic_id: topic_id }),
+            data: {},
+            contentType:"application/json",
+            dataType: "json",
+            success: function (response) {
+                update_comments();
+            }
+        }).always(function () { get_flash(); });
+    });
+    });
+</script>
+{% endblock %}
+
+{% block main %}
+<div class="modal fade visuall" aria-hidden="true" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Are you sure ?</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                you are about to delete <span class="fw-bold" id="delete_name"></span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" id="delete_confirm">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModal2" aria-hidden="true" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Are you sure ?</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                you are about to delete <span class="fw-bold" id="delete_name2"></span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" id="delete_confirm2">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid p-0" style="overflow: hidden;">
+    <div class="row">
+        <div class=" col-2 ps-2 pe-1 pt-1 ms-2   overflow-y-auto bg-body-tertiary shadow d-none d-md-block "
+            id="sidebar_id" style="width: 20%;z-index: 100;">
+            <div
+                class="d-flex align-items-center justify-content-between  pb-3 mb-3 link-dark text-decoration-none border-bottom">
+
+                <a href="{{request.url}}" class="fs-4 fw-semibold link-dark text-decoration-none">
+                    {{domain.title()}}</a>
+                <!-- <div class="m-0 p-0 d-flex align-self-end " style="width: 15%;">
+            <img src="static\Images\laptop.png" alt="computer vision" width="100%" height="auto">
+        </div> -->
+                <button type="button" class="btn btn-close toggle_side_left"> </button>
+            </div>
+            <div style="overflow-y: auto;">
+
+                {% for chapter in chapters %}
+                <ul class="list-unstyled ps-0">
+                    <li class="mb-1">
+
+
+                        <div class="d-flex justify-content-between ">
+                            <button
+                                class="w-100 btn  btn-outline-warning text-start border-0 text-dark p-1 {% if loop.index==1 %}active{% endif %}"
+                                name="show_btn" chapter="{{chapter.name}}" topic_id="{{chapter.id}}">
+                                {{ chapter.name }}
+                            </button>
+                     
+                        </div>
+
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+        </div>
+        <div class="col  p-3" id="document_view_container"
+            style="overflow-y:auto;width: 960px;background-color: #f4f4f4;">
+            <div class="row">
+                <div class="col">
+                    <div class="d-flex justify-content-between ">
+                        <button class="btn d-none toggle_side_left link-body-emphasis pt-0 mt-0 " id="show_left"><i
+                                class="bi bi-arrow-bar-right"></i></button>
+                        <button class="btn d-md-none" type="button">
+                            <i class="bi bi-arrow-bar-right"></i>
+                        </button>
+                        <nav class=" d-flex   "
+                            style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);"
+                            aria-label="breadcrumb">
+                            <ol class="breadcrumb" id="other_breadcrumbs">
+                                <li class="breadcrumb-item "><a class="text-decoration-none "
+                                        href="{{url_for('home.index')}}">Home</a></li>
+                                <li class="breadcrumb-item " aria-current="page"> <a class="text-decoration-none "
+                                        href="{{request.url}}">{{domain.title()}}</a></li>
+
+                                {% if chapters | length > 0 %}
+                                <li class="breadcrumb-item active added_later">{{chapters[0].name}}</li>
+                                {% endif %}
+
+                            </ol>
+                        </nav>
+                        <div class="">
+                            <button class="btn link-body-emphasis link-opacity-50-hover  " style="display: none;"
+                                id="show_pp">
+                                <i class="bi bi-file-ppt"></i></button>
+                            <button class="btn link-body-emphasis  " id="fullscreen"><i
+                                    class="bi bi-arrows-fullscreen"></i></button>
+                        </div>
+                        <button class="btn d-none toggle_side_right link-body-emphasis" id="show_right"><i
+                                class="bi bi-arrow-bar-left"></i></button>
+                    </div>
+                    <style>
+                        img {
+                            vertical-align: bottom !important;
+                            margin-bottom: 10px;
+                        }
+                    </style>
+                    <div id="document_view" class="ck-content bg-white shadow-sm p-4 rounded border"
+                        oncopy="alert('Copying not allowed'); return false;" onmousedown='return false;'
+                        onselectstart='return false;' style=" min-width: 18em; text-align: justify;">
+                        {% if chapters | length > 0 %}
+
+                        {{chapters[0].content | safe}}
+                        {% if chapters | length >1 %}
+                        <div class="d-flex justify-content-end align-items-center">
+                            <a class="icon-link icon-link-hover fs-6 text-decoration-none" name="show_btn" type="button"
+                                chapter="{{chapters[1].name}}" >
+
+                                Next: {{ chapters[1].name }}
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
+                                </svg>
+                            </a>
+
+                        </div>
+                        {% endif %}
+
+                        {% endif %}
+
+
+                    </div>
+
+                </div>
+            </div>
+            <div>
+                <div class="text-center h2 my-3">
+                    Comments
+                </div>
+                <div class="row justify-content-center">
+                    {% if current_user.role=="professor" and current_user.id==course.professor_id %}
+                    <div class="d-flex my-3 justify-content-end col-11 px-0">
+                       <button type="button" class="btn btn-warning" id="clear_comm_btn">
+                           Clear Comments 
+                       </button>
+                    </div>
+                       {% endif %}
+                </div>
+                <div class="row justify-content-center" id="comments_section">
+                   
+
+                    {% if chapters %}
+                        
+                    
+                    {% for comment in chapters[0].comments %}
+                    <div class="col-11 p-2 bg-white rounded-2 shadow-sm mb-3 ">
+                        <div class="d-flex justify-content-between border-bottom mb-2">
+                            <span class="h4 ">{{comment.author_name}}</span> <br>
+                            <div class="d-flex gap-2 align-items-center">
+                                <span style="font-size: small;">{{comment.date_posted.strftime("%H:%M %Y-%m-%d")}}</span>
+                              {% if current_user.id==comment.author_id %}
+                               <!-- <button class="btn btn-close" name="delete_comment" comment_id="{{comment.id}}"></button> -->
+                               {% endif %} 
+                            </div>
+                        </div>
+                        <div class="ck-content">
+                            {{comment.text |safe}}
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+
+
+                <div class="main-container">
+                    <div class="editor-container editor-container_classic-editor" id="editor-container">
+                        <div class="editor-container__editor">
+                            <div id="editor"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script type="importmap">
+        {
+            "imports": {
+                "ckeditor5": "https://cdn.ckeditor.com/ckeditor5/42.0.2/ckeditor5.js",
+                "ckeditor5/": "https://cdn.ckeditor.com/ckeditor5/42.0.2/"
+            }
+        }
+        </script>
+            <script type="module" src="/static/js/main.js"></script>
+
+            <div class="d-flex justify-content-end mt-3 bg-gradient ">
+                <button type="button" class="btn btn-warning" id="add_comment">
+                    Add Comment
+                </button>
+
+            </div>
+        </div> 
+    </div>
+</div>
+
+
+<script src="{{ url_for('topics.static', filename='custom/sidebars.js') }}"></script>
+
+{% endblock %}
+{% block footer %}
+
+{% endblock %}

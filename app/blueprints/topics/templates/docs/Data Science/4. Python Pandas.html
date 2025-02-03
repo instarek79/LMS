@@ -1,0 +1,476 @@
+<p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">4.1 Introduction to Pandas</strong></p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">Pandas is a powerful open-source data analysis and manipulation library for Python. It provides data structures and functions needed to work on structured data seamlessly. The two primary data structures in pandas are:</p><ul style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;list-style-type:disc;margin-bottom:1rem;margin-top:0px;orphans:2;padding-left:2rem;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><li style="box-sizing:border-box;"><p style="text-align:justify;"><strong style="box-sizing:border-box;font-weight:bolder;">Series</strong>: A one-dimensional labeled array capable of holding any data type.</p></li><li style="box-sizing:border-box;"><p style="text-align:justify;"><strong style="box-sizing:border-box;font-weight:bolder;">DataFrame</strong>: A two-dimensional labeled data structure with columns of potentially different types.</p></li></ul><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Importing Pandas</strong><br>To use pandas, you need to import it in your script&nbsp;</p><pre style="-webkit-text-stroke-width:0px;background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;orphans:2;overflow:auto;padding:1em;tab-size:4;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:pre-wrap;widows:2;word-spacing:0px;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;">import pandas as pd</code></pre><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">It supports:</p><ul style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;list-style-type:disc;margin-bottom:1rem;margin-top:0px;orphans:2;padding-left:2rem;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><li style="box-sizing:border-box;"><p style="text-align:justify;">Easy data manipulation and retrieval using labels.</p></li><li style="box-sizing:border-box;"><p style="text-align:justify;">Integration with various file formats for reading and writing data.</p></li><li style="box-sizing:border-box;"><p style="text-align:justify;">Basic and advanced data operations such as filtering, adding/deleting columns, and accessing rows/columns.</p></li></ul><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">By mastering these basic concepts and operations, you can leverage pandas for efficient data analysis and manipulation in Python.</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">In the next topics we will discuss <strong style="box-sizing:border-box;font-weight:bolder;">Pandas Series </strong>.</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">4.2 Pandas Series</strong></p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">A <strong style="box-sizing:border-box;font-weight:bolder;">Pandas Series</strong> is a one-dimensional array-like object that can hold various types of data (integers, strings, floating-point numbers, Python objects, etc.). It is similar to a column in a DataFrame or a one-dimensional array in NumPy but with additional features such as labeled indices.</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Creating a Series</strong><br>You can create a Pandas Series in several ways:</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">From a list or array:</strong></p><pre style="-webkit-text-stroke-width:0px;background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;orphans:2;overflow:auto;padding:1em;tab-size:4;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:pre-wrap;widows:2;word-spacing:0px;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;"># Creating a Series from a list
+data = [1, 2, 3, 4, 5]
+series_from_list = pd.Series(data)
+print("Series from list:")
+print(series_from_list)
+ """ Output
+ Series from list:
+0    1
+1    2
+2    3
+3    4
+4    5
+dtype: int64
+"""</code></pre><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">From a dictionary:</strong></p><pre style="-webkit-text-stroke-width:0px;background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;orphans:2;overflow:auto;padding:1em;tab-size:4;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:pre-wrap;widows:2;word-spacing:0px;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;"># Creating a Series from a dictionary
+data_dict = {'a': 10, 'b': 20, 'c': 30}
+series_from_dict = pd.Series(data_dict)
+print("\nSeries from dictionary:")
+print(series_from_dict)
+ """ Output
+ Series from dictionary:
+a    10
+b    20
+c    30
+dtype: int64
+"""</code></pre><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">From a scalar value:</strong></p><pre style="-webkit-text-stroke-width:0px;background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;orphans:2;overflow:auto;padding:1em;tab-size:4;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:pre-wrap;widows:2;word-spacing:0px;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;">
+# Creating a Series from a scalar value
+scalar_series = pd.Series(5, index=['a', 'b', 'c'])
+print("\nSeries from scalar value:")
+print(scalar_series)
+
+""" Output
+Series from scalar value:
+a    5
+b    5
+c    5
+dtype: int64
+"""</code></pre><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Indexing and Slicing</strong><br>You can access elements in a Series using indices, both positional and label-based.</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Positional Indexing:</strong></p><pre style="-webkit-text-stroke-width:0px;background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;orphans:2;overflow:auto;padding:1em;tab-size:4;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:pre-wrap;widows:2;word-spacing:0px;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;">data = [1, 2, 3, 4, 5]
+series_from_list = pd.Series(data)
+# Accessing elements by position
+print("First element:", series_from_list[0])
+print("Last element:", series_from_list[-1])
+
+""" Output
+First element: 1
+Last element: 5
+"""</code></pre><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Label-based Indexing:</strong></p><pre style="-webkit-text-stroke-width:0px;background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;orphans:2;overflow:auto;padding:1em;tab-size:4;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:pre-wrap;widows:2;word-spacing:0px;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;">data_dict = {'a': 10, 'b': 20, 'c': 30}
+series_from_dict = pd.Series(data_dict)
+# Accessing elements by label
+print("Element with label 'a':", series_from_dict['a'])
+""" Output
+Element with label 'a': 10
+"""</code></pre><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Slicing:</strong><br>&nbsp;</p><pre style="-webkit-text-stroke-width:0px;background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;orphans:2;overflow:auto;padding:1em;tab-size:4;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:pre-wrap;widows:2;word-spacing:0px;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;">data = [1, 2, 3, 4, 5]
+series_from_list = pd.Series(data)
+# Slicing a Series
+print("\nSlicing Series from index 1 to 3:")
+print(series_from_list[1:4])
+""" Output
+Slicing Series from index 1 to 3:
+1    2
+2    3
+3    4
+dtype: int64
+"""</code></pre><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Operations on Series</strong><br><strong style="box-sizing:border-box;font-weight:bolder;">Element-wise Operations:</strong></p><pre style="-webkit-text-stroke-width:0px;background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;orphans:2;overflow:auto;padding:1em;tab-size:4;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:pre-wrap;widows:2;word-spacing:0px;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;"># Element-wise operations
+series = pd.Series([1, 2, 3, 4])
+print("\nOriginal Series:")
+print(series)
+
+# Addition
+print("\nSeries after adding 2:")
+print(series + 2)
+
+# Multiplication
+print("\nSeries after multiplying by 3:")
+print(series * 3)
+
+""" Output
+Original Series:
+0    1
+1    2
+2    3
+3    4
+dtype: int64
+
+Series after adding 2:
+0    3
+1    4
+2    5
+3    6
+dtype: int64
+
+Series after multiplying by 3:
+0     3
+1     6
+2     9
+3    12
+dtype: int64
+"""</code></pre><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Using NumPy Functions:</strong></p><pre style="-webkit-text-stroke-width:0px;background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;orphans:2;overflow:auto;padding:1em;tab-size:4;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:pre-wrap;widows:2;word-spacing:0px;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;">import numpy as np
+series = pd.Series([1, 2, 3, 4])
+# Applying NumPy functions
+print("\nSquare root of Series:")
+print(np.sqrt(series))
+
+""" Output
+Square root of Series:
+0    1.000000
+1    1.414214
+2    1.732051
+3    2.000000
+dtype: float64
+"""</code></pre><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Filtering:</strong></p><pre style="-webkit-text-stroke-width:0px;background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;orphans:2;overflow:auto;padding:1em;tab-size:4;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:pre-wrap;widows:2;word-spacing:0px;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;"># Filtering elements
+series = pd.Series([1, 2, 3, 4])
+print("\nElements greater than 2:")
+print(series[series &gt; 2])
+""" Output
+Square root of Series:
+Elements greater than 2:
+2    3
+3    4
+dtype: int64
+"""</code></pre><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Handling Missing Data</strong><br>Pandas Series can handle missing data using NaN (Not a Number).</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Detecting Missing Values:</strong></p><pre style="-webkit-text-stroke-width:0px;background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;orphans:2;overflow:auto;padding:1em;tab-size:4;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:pre-wrap;widows:2;word-spacing:0px;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;"># Creating a Series with missing values
+series_with_nan = pd.Series([1, np.nan, 3, np.nan, 5])
+print("\nSeries with NaN values:")
+print(series_with_nan)
+
+# Detecting missing values
+print("\nIs NaN present:")
+print(series_with_nan.isna())
+""" Output
+Series with NaN values:
+0    1.0
+1    NaN
+2    3.0
+3    NaN
+4    5.0
+dtype: float64
+
+Is NaN present:
+0    False
+1     True
+2    False
+3     True
+4    False
+dtype: bool
+"""</code></pre><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Filling Missing Values:</strong></p><pre style="-webkit-text-stroke-width:0px;background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;orphans:2;overflow:auto;padding:1em;tab-size:4;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:pre-wrap;widows:2;word-spacing:0px;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;"># Filling missing values with a specified value
+series_with_nan = pd.Series([1, np.nan, 3, np.nan, 5])
+filled_series = series_with_nan.fillna(0)
+print("\nSeries after filling NaN with 0:")
+print(filled_series)
+
+""" Output
+Series after filling NaN with 0:
+0    1.0
+1    0.0
+2    3.0
+3    0.0
+4    5.0
+dtype: float64
+"""</code></pre><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Dropping Missing Values:</strong></p><pre style="-webkit-text-stroke-width:0px;background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;orphans:2;overflow:auto;padding:1em;tab-size:4;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:pre-wrap;widows:2;word-spacing:0px;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;"># Dropping missing values
+series_with_nan = pd.Series([1, np.nan, 3, np.nan, 5])
+dropped_series = series_with_nan.dropna()
+print("\nSeries after dropping NaN values:")
+print(dropped_series)
+""" Output
+Series after dropping NaN values:
+0    1.0
+2    3.0
+4    5.0
+dtype: float64
+"""</code></pre><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">A Pandas Series is a versatile one-dimensional labeled array-like object capable of holding different types of data. It supports various operations such as:</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">Creating Series from lists, dictionaries, and scalar values.<br>Indexing and slicing both positionally and label-based.<br>Performing element-wise operations and applying NumPy functions.<br>Handling missing data effectively by detecting, filling, or dropping missing values.<br>Understanding and mastering Pandas Series is a fundamental step towards efficient data manipulation and analysis using Pandas.</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Our next topics is Pandas Datafram</strong></p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">4.3 Pandas Dataframe</strong></p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">A Pandas DataFrame is a two-dimensional labeled data structure with columns of potentially different types. Think of it as a spreadsheet or SQL table in Python. It’s one of the most powerful tools in the pandas library, providing flexible data manipulation and analysis.</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Creating a DataFrame</strong><br>You can create a DataFrame in several ways:</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">From a dictionary of lists:</strong></p><pre style="-webkit-text-stroke-width:0px;background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;orphans:2;overflow:auto;padding:1em;tab-size:4;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:pre-wrap;widows:2;word-spacing:0px;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;">import pandas as pd
+
+# Creating a DataFrame from a dictionary of lists
+data = {
+    'Name': ['Alice', 'Bob', 'Charlie'],
+    'Age': [25, 30, 35],
+    'City': ['New York', 'Los Angeles', 'Chicago']
+}
+
+df = pd.DataFrame(data)
+print("DataFrame from dictionary of lists:")
+print(df)
+""" Output
+DataFrame from dictionary of lists:
+      Name  Age         City
+0    Alice   25     New York
+1      Bob   30  Los Angeles
+2  Charlie   35      Chicago
+"""</code></pre><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;">&nbsp;</p><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">From a list of dictionaries:</strong></p><pre style="-webkit-text-stroke-width:0px;background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;orphans:2;overflow:auto;padding:1em;tab-size:4;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:pre-wrap;widows:2;word-spacing:0px;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;"># Creating a DataFrame from a list of dictionaries
+data = [
+    {'Name': 'Alice', 'Age': 25, 'City': 'New York'},
+    {'Name': 'Bob', 'Age': 30, 'City': 'Los Angeles'},
+    {'Name': 'Charlie', 'Age': 35, 'City': 'Chicago'}
+]
+
+df = pd.DataFrame(data)
+print("\nDataFrame from list of dictionaries:")
+print(df)
+""" Output
+DataFrame from list of dictionaries:
+      Name  Age         City
+0    Alice   25     New York
+1      Bob   30  Los Angeles
+2  Charlie   35      Chicago
+"""</code></pre><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">From a NumPy array:</strong></p><pre style="-webkit-text-stroke-width:0px;background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;orphans:2;overflow:auto;padding:1em;tab-size:4;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:pre-wrap;widows:2;word-spacing:0px;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;">import numpy as np
+# Creating a DataFrame from a NumPy array
+data = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+df = pd.DataFrame(data, columns=['A', 'B', 'C'])
+print("\nDataFrame from NumPy array:")
+print(df)
+""" Output
+DataFrame from NumPy array:
+   A  B  C
+0  1  2  3
+1  4  5  6
+2  7  8  9
+"""</code></pre><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Basic DataFrame Operations</strong><br><strong style="box-sizing:border-box;font-weight:bolder;">Viewing Data</strong></p><pre style="-webkit-text-stroke-width:0px;background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;orphans:2;overflow:auto;padding:1em;tab-size:4;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:pre-wrap;widows:2;word-spacing:0px;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;">data = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+df = pd.DataFrame(data, columns=['A', 'B', 'C'])
+# Viewing the first few rows of the DataFrame
+print("First 2 rows of the DataFrame:")
+print(df.head(2))
+
+# Viewing the last few rows of the DataFrame
+print("\nLast 2 rows of the DataFrame:")
+print(df.tail(2))
+""" Output
+First 2 rows of the DataFrame:
+   A  B  C
+0  1  2  3
+1  4  5  6
+
+Last 2 rows of the DataFrame:
+   A  B  C
+1  4  5  6
+2  7  8  9
+"""</code></pre><p style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Accessing Columns</strong></p><pre style="-webkit-text-stroke-width:0px;background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;orphans:2;overflow:auto;padding:1em;tab-size:4;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:pre-wrap;widows:2;word-spacing:0px;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;">data = [
+    {'Name': 'Alice', 'Age': 25, 'City': 'New York'},
+    {'Name': 'Bob', 'Age': 30, 'City': 'Los Angeles'},
+    {'Name': 'Charlie', 'Age': 35, 'City': 'Chicago'}
+]
+
+df = pd.DataFrame(data)
+
+# Accessing a single column
+print("Accessing 'Name' column:")
+print(df['Name'])
+
+# Accessing multiple columns
+print("\nAccessing 'Name' and 'City' columns:")
+print(df[['Name', 'City']])
+
+""" Output
+Accessing 'Name' column:
+0      Alice
+1        Bob
+2    Charlie
+Name: Name, dtype: object
+
+Accessing 'Name' and 'City' columns:
+      Name         City
+0    Alice     New York
+1      Bob  Los Angeles
+2  Charlie      Chicago
+"""
+</code></pre><div class="dark bg-gray-950 rounded-md border-[0.5px] border-token-border-medium" style="-webkit-text-stroke-width:0px;box-sizing:border-box;color:rgb(33, 37, 41);font-family:Lato;font-size:16px;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:justify;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;"><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Adding and Deleting Columns</strong></p><pre style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;overflow:auto;padding:1em;tab-size:4;text-align:left;white-space:pre-wrap;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;">data = [
+    {'Name': 'Alice', 'Age': 25, 'City': 'New York'},
+    {'Name': 'Bob', 'Age': 30, 'City': 'Los Angeles'},
+    {'Name': 'Charlie', 'Age': 35, 'City': 'Chicago'}
+]
+
+df = pd.DataFrame(data)
+# Adding a new column
+df['Salary'] = [70000, 80000, 90000]
+print("DataFrame after adding 'Salary' column:")
+print(df)
+
+# Deleting a column
+df.drop('City', axis=1, inplace=True)
+print("\nDataFrame after deleting 'City' column:")
+print(df)
+
+""" Output
+DataFrame after adding 'Salary' column:
+      Name  Age         City  Salary
+0    Alice   25     New York   70000
+1      Bob   30  Los Angeles   80000
+2  Charlie   35      Chicago   90000
+
+DataFrame after deleting 'City' column:
+      Name  Age  Salary
+0    Alice   25   70000
+1      Bob   30   80000
+2  Charlie   35   90000
+"""</code></pre><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Accessing Rows</strong><br>You can access rows using the iloc (index-based) and loc (label-based) methods.</p><pre style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;overflow:auto;padding:1em;tab-size:4;text-align:left;white-space:pre-wrap;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;"># Accessing rows by index
+print("First row of the DataFrame using iloc:")
+print(df.iloc[0])
+
+# Accessing rows by label
+print("\nRow with index 1 using loc:")
+print(df.loc[1])
+""" Output
+First row of the DataFrame using iloc:
+Name      Alice
+Age          25
+Salary    70000
+Name: 0, dtype: object
+
+Row with index 1 using loc:
+Name        Bob
+Age          30
+Salary    80000
+Name: 1, dtype: object
+"""</code></pre><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Filtering Rows</strong></p><pre style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;overflow:auto;padding:1em;tab-size:4;text-align:left;white-space:pre-wrap;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;">data = [
+    {'Name': 'Alice', 'Age': 25, 'City': 'New York','Salary':70000},
+    {'Name': 'Bob', 'Age': 30, 'City': 'Los Angeles','Salary':80000},
+    {'Name': 'Charlie', 'Age': 35, 'City': 'Chicago','Salary':90000}
+]
+df = pd.DataFrame(data)
+# Filtering rows based on a condition
+print("Rows where Age is greater than 30:")
+print(df[df['Age'] &gt; 30])
+""" Output
+Rows where Age is greater than 30:
+      Name  Age  Salary
+2  Charlie   35   90000
+"""</code></pre><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Handling Missing Data</strong><br>Pandas provides methods to handle missing data efficiently.</p><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Detecting Missing Values</strong></p><pre style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;overflow:auto;padding:1em;tab-size:4;text-align:left;white-space:pre-wrap;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;"># Creating a DataFrame with missing values
+data_with_nan = {
+    'Name': ['Alice', 'Bob', None],
+    'Age': [25, None, 35],
+    'City': ['New York', 'Los Angeles', 'Chicago']
+}
+
+df_with_nan = pd.DataFrame(data_with_nan)
+print("DataFrame with NaN values:")
+print(df_with_nan)
+
+# Detecting missing values
+print("\nDetecting missing values with isna():")
+print(df_with_nan.isna())
+""" Output
+DataFrame with NaN values:
+    Name   Age         City
+0  Alice  25.0     New York
+1    Bob   NaN  Los Angeles
+2   None  35.0      Chicago
+
+Detecting missing values with isna():
+    Name    Age   City
+0  False  False  False
+1  False   True  False
+2   True  False  False
+"""</code></pre><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Filling Missing Values</strong></p><pre style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;overflow:auto;padding:1em;tab-size:4;text-align:left;white-space:pre-wrap;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;"># Filling missing values with a specified value
+df_filled = df_with_nan.fillna('Unknown')
+print("\nDataFrame after filling NaN values:")
+print(df_filled)
+""" Output
+DataFrame after filling NaN values:
+      Name      Age         City
+0    Alice     25.0     New York
+1      Bob  Unknown  Los Angeles
+2  Unknown     35.0      Chicago
+"""</code></pre><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Dropping Missing Values</strong></p><pre style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;overflow:auto;padding:1em;tab-size:4;text-align:left;white-space:pre-wrap;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;"># Dropping rows with any missing values
+df_dropped = df_with_nan.dropna()
+print("\nDataFrame after dropping rows with NaN values:")
+print(df_dropped)
+""" Output
+DataFrame after filling NaN values:
+DataFrame after dropping rows with NaN values:
+    Name   Age     City
+0  Alice  25.0 New York
+"""</code></pre><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Reading and Writing Data</strong><br>Pandas can read from and write to various file formats, including CSV, Excel, SQL, and JSON.</p><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Reading from a CSV File</strong></p><pre style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;overflow:auto;padding:1em;tab-size:4;text-align:left;white-space:pre-wrap;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;"># Reading data from a CSV file
+df_from_csv = pd.read_csv('data.csv')
+print("DataFrame read from CSV file:")
+print(df_from_csv)</code></pre><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Writing to a CSV File</strong></p><pre style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;overflow:auto;padding:1em;tab-size:4;text-align:left;white-space:pre-wrap;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;"># Writing data to a CSV file
+df.to_csv('output.csv', index=False)
+print("DataFrame written to CSV file 'output.csv'")</code></pre><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">&nbsp;Basic Information and Inspection</strong></p><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Dataframe information</strong></p><pre style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;overflow:auto;padding:1em;tab-size:4;text-align:left;white-space:pre-wrap;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;">data = {
+    'Name': ['Alice', 'Bob', 'Charlie'],
+    'Age': [25, 30, 35],
+    'City': ['New York', 'Los Angeles', 'Chicago']
+}
+df = pd.DataFrame(data)
+print(df.info())</code></pre><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Dataframe statistics</strong></p><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;">Generates descriptive statistics for numerical columns.</p><pre style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;overflow:auto;padding:1em;tab-size:4;text-align:left;white-space:pre-wrap;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;">df.describe()
+Generates descriptive statistics for numerical columns.</code></pre><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">&nbsp;Selecting and Filtering Data</strong></p><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Selecting Columns</strong></p><pre style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;overflow:auto;padding:1em;tab-size:4;text-align:left;white-space:pre-wrap;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;"># Single column
+
+print(df['Name'])
+
+
+
+# Multiple columns
+
+print(df[['Name', 'City']])</code></pre><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Selecting Rows by Index</strong></p><pre style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;overflow:auto;padding:1em;tab-size:4;text-align:left;white-space:pre-wrap;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;"># Single row by index
+
+print(df.iloc[1])
+
+
+
+# Multiple rows by index range
+
+print(df.iloc[1:3])</code></pre><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Selecting Rows by Condition</strong></p><pre style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;overflow:auto;padding:1em;tab-size:4;text-align:left;white-space:pre-wrap;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;"># Rows where Age &gt; 30
+
+print(df[df['Age'] &gt; 30])</code></pre><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Locating Data by Label</strong></p><pre style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;overflow:auto;padding:1em;tab-size:4;text-align:left;white-space:pre-wrap;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;"># Single row by label
+
+print(df.loc[0])
+
+
+
+# Multiple rows and columns by labels
+
+print(df.loc[0:2, ['Name', 'City']])</code></pre><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Modifying Data</strong></p><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Renaming Columns</strong></p><pre style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;overflow:auto;padding:1em;tab-size:4;text-align:left;white-space:pre-wrap;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;">df.rename(columns={'Name': 'Full Name'}, inplace=True)
+
+print(df)</code></pre><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Dropping Columns</strong></p><pre style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;overflow:auto;padding:1em;tab-size:4;text-align:left;white-space:pre-wrap;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;">df.drop('City', axis=1, inplace=True)
+
+print(df)</code></pre><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Dropping Rows Based on a Single Condition</strong><br>For example, to drop rows where the Age is greater than 30:</p><pre style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;overflow:auto;padding:1em;tab-size:4;text-align:left;white-space:pre-wrap;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;">df_filtered = df[df['Age'] &lt;= 30]
+
+print("\nDataFrame after dropping rows where Age &gt; 30:")
+
+print(df_filtered)</code></pre><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Dropping Rows Based on Multiple Conditions</strong><br>You can combine multiple conditions using logical operators (&amp; for AND, | for OR).</p><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;">For example, to drop rows where the Age is greater than 30 and the Salary is less than 95000:</p><pre style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;overflow:auto;padding:1em;tab-size:4;text-align:left;white-space:pre-wrap;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;">df_filtered = df[~((df['Age'] &gt; 30) &amp; (df['Salary'] &lt; 95000))]
+
+print("\nDataFrame after dropping rows where Age &gt; 30 and Salary &lt; 95000:")
+
+print(df_filtered)</code></pre><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Data Aggregation and Grouping</strong></p><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Grouping Data</strong></p><pre style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;overflow:auto;padding:1em;tab-size:4;text-align:left;white-space:pre-wrap;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;">data = {
+    'Name': ['Alice', 'Bob', 'Charlie', 'Alice', 'Bob'],
+    'Age': [25, 30, 35, 26, 31],
+    'City': ['New York', 'Los Angeles', 'Chicago', 'New York', 'Los Angeles'],
+    'Salary': [70000, 80000, 90000, 75000, 85000]
+}
+df = pd.DataFrame(data)
+
+# Grouping by a column
+grouped = df.groupby('Salary')
+print(grouped.mean())</code></pre><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Aggregating Data</strong></p><pre style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;overflow:auto;padding:1em;tab-size:4;text-align:left;white-space:pre-wrap;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;"># Multiple aggregation functions
+print(df.groupby('City').agg({'Salary': ['mean', 'max']}))</code></pre><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Merging and Joining DataFrames</strong></p><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Merging</strong></p><pre style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;overflow:auto;padding:1em;tab-size:4;text-align:left;white-space:pre-wrap;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;">data1 = {'key': ['A', 'B', 'C'], 'value1': [1, 2, 3]}
+data2 = {'key': ['A', 'B', 'D'], 'value2': [4, 5, 6]}
+
+df1 = pd.DataFrame(data1)
+df2 = pd.DataFrame(data2)
+
+merged_df = pd.merge(df1, df2, on='key', how='inner')
+print(merged_df)
+"""Output
+   key  value1  value2
+
+0   A       1       4
+
+1   B       2       5
+"""</code></pre><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Joining</strong></p><pre style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;overflow:auto;padding:1em;tab-size:4;text-align:left;white-space:pre-wrap;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;"># Setting index for joining
+
+df1.set_index('key', inplace=True)
+
+df2.set_index('key', inplace=True)
+
+
+
+joined_df = df1.join(df2, how='outer')
+
+print(joined_df)
+
+"""Output
+     value1  value2
+
+key
+
+A       1.0     4.0
+
+B       2.0     5.0
+
+C       3.0     NaN
+
+D       NaN     6.0
+"""</code></pre><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Sorting Data</strong></p><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Sorting by Columns</strong></p><pre style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;overflow:auto;padding:1em;tab-size:4;text-align:left;white-space:pre-wrap;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;">sorted_df = df.sort_values(by='Age', ascending=False)
+print(sorted_df)</code></pre><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Sorting by Index</strong></p><pre style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;overflow:auto;padding:1em;tab-size:4;text-align:left;white-space:pre-wrap;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;">sorted_index_df = df.sort_index()
+
+print(sorted_index_df)</code></pre><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Saving and Loading Data</strong></p><pre style="background-color:rgba(199, 199, 199, 0.3);border-radius:2px;border:1px solid rgb(196, 196, 196);box-sizing:border-box;color:rgb(53, 53, 53);direction:ltr;display:block;font-family:var(--bs-font-monospace);font-size:0.875em;font-style:normal;margin-bottom:1rem;margin-top:0px;min-width:200px;overflow:auto;padding:1em;tab-size:4;text-align:left;white-space:pre-wrap;"><code class="language-python" style="border-radius:0px;box-sizing:border-box;color:inherit;font-family:var(--bs-font-monospace);font-size:inherit;overflow-wrap:break-word;padding:0px;word-break:normal;">#Saving to csv
+df.to_csv('output.csv', index=False)
+print("DataFrame saved to 'output.csv'")
+#loading csv
+loaded_df = pd.read_csv('output.csv')
+print(loaded_df</code></pre><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">Conclusion</strong></p><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;">Pandas DataFrame provides powerful functionalities for data manipulation and analysis, making it a cornerstone of data science workflows. It offers a flexible data structure, versatile methods for data inspection, modification, aggregation, merging, sorting, and handling missing data, and seamless integration with various file formats for saving and loading data. Mastery of these operations is crucial for effective data preprocessing and analysis in Python.</p><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;"><strong style="box-sizing:border-box;font-weight:bolder;">In the next topic we will focus in data visualization using Matplotlib</strong></p><p style="box-sizing:border-box;margin-bottom:1rem;margin-top:0px;">&nbsp;</p></div>

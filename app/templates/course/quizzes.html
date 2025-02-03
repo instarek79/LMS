@@ -1,0 +1,149 @@
+{% extends 'base/base.html' %}
+{% block title %}
+Quizzes
+{% endblock %}
+{% block headscript %}
+
+{% if current_user.is_authenticated and current_user.role=="professor" %}
+<script>
+    
+    $(document).ready(function () {
+        var table=$('#quizzes_table').clone();
+        $('#refresh_btn').click(function (e) { 
+            e.preventDefault();
+            $('#quizzes_table').html(table);
+            $('#refresh_btn').hide();
+        });
+        $(document).on('click', '.view-btn', function () {
+            $('#refresh_btn').show();
+            quiz_id=$(this).attr('quiz_id');
+            $('#quizzes_table').empty();
+            $('#quizzes_table').html(
+                `
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Student Name</th>
+                    <th scope="col">Marks</th>
+                </tr>
+            </thead>
+             <tbody class="table-group-divider" id="students_table">
+            </tbody>
+            `
+        );
+        
+            $.get(`/api/quizzes/get_students/${quiz_id}`, null,
+                function (data, textStatus, jqXHR) {
+                    $.each(data, function (indexInArray, student) { 
+                        $('#students_table').append(
+                            `
+                            <tr>
+                                <td>${indexInArray + 1}</td>
+                                <td>${student.first_name} ${student.last_name}</td>
+                                <td>${student.marks}</td>
+                            </tr>
+                            `
+                        );
+                    });
+                    if(data.length==0){
+                        $('#students_table').append(
+                            `
+                            <tr>
+                                <td colspan="3">No Students</td>
+                                </tr>
+                                `
+                        );
+                    }
+                    
+                },
+                "json"
+            );
+        });
+    });
+</script>
+{% endif %}
+
+{% endblock %}
+
+{% block main %}
+
+<div class="container-fluid">
+    <div class="h1 text-center">
+        Your Quizzes
+    </div>
+
+    {% if current_user.role=="professor" %}
+    <div class="d-flex justify-content-end">
+        <!--  -->
+        <button id="refresh_btn" class="btn btn-outline-dark border-0 " style="display: none;"><i class="bi bi-arrow-clockwise fw-bolder fs-3"></i></button>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-secondary table-striped table-hover text-center" id="quizzes_table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Quiz Name</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Students Answered</th>
+                    <th scope="col">View Students</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                {% for quiz in current_user.created_quizzes %}
+                <tr class="">
+                    <td scope="row">{{loop.index}}</td>
+                    <td>{{quiz.name}}</td>
+                    <td>{{quiz.date.strftime("%H:%M %Y-%m-%d")}}</td>
+                    <td>{{quiz.students | length}}</td>
+                    <td><button type="button" class="btn btn-outline-dark border-0 view-btn" quiz_id="{{quiz.id}}"> <bi class="bi bi-eye-fill"> </bi></button></td>
+                </tr>
+                {% endfor %}
+                
+            
+            </tbody>
+        </table>
+    </div>
+
+
+    {% endif %}
+
+
+
+
+    {% if current_user.role=="student" %}
+
+    <div class="table-responsive">
+        <table class="table table-secondary table-striped table-hover text-center">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Quiz Name</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">marks</th>
+
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+
+                {% if current_user.is_authenticated and current_user.role=='student' %}
+                {% for quiz in current_user.taken_quizzes %}
+                <tr class="">
+                    <td scope="row">{{loop.index}}</td>
+                    <td>{{quiz.name}}</td>
+                    <td>{{quiz.date.strftime("%H:%M %Y-%m-%d")}}</td>
+                    <td>{{QuizStudentAssociation.query.filter_by(student_id=current_user.id,quiz_id=quiz.id).first().total_marks}}
+                    </td>
+                </tr>
+                {% endfor %}
+
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+
+    {% endif %}
+
+
+</div>
+
+{% endblock %}

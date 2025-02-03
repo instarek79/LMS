@@ -1,0 +1,155 @@
+<style>
+  @font-face {
+    font-family: 'blippo';
+    /*a name to be used later*/
+    src: url('/static/fonts/blippo.ttf');
+    /*URL to font*/
+
+  }
+
+  .custom-font {
+    font-family: 'blippo';
+    color: #3F3E45;
+    line-height: 25px;
+
+  }
+</style>
+<nav class="sticky-top">
+  <nav class="navbar  navbar-expand-lg navbar-light   " style="background-color: #F4F4F4;">
+    <div class="container-fluid">
+      <a class="navbar-brand p-0 d-flex align-items-end " href="{{url_for('home.index')}}"><img
+          src="{{url_for('static',filename='img/Logo.png')}}" class="img img-fluid  m-0 p-0 me-2  " style="height:6vh;">
+        <div class="custom-font p-0 m-0 fs-2  ">LMS</div>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+        aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse " id="navbarTogglerDemo02">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          {% if current_user.is_authenticated and current_user.role=='admin' %}
+          <!-- <li>
+            <a class="nav-link  btn btn-outline-warning  bg-gradient fw-bold  "
+              href="{{url_for('topics.add_document')}}">Add Document </a>
+          </li> -->
+
+          {% endif %}
+        </ul>
+        <!-- <form class="d-flex p-0 my-0 align-items-center mb-3 mb-md-0 border-end border-3 pe-2 me-2" role="search">
+          <input type="text" class="form-control d-block d-md-none" name="search" id="search" a />
+          <button class="btn   bg-transparent p-0 mx-2 border-0 link-dark" type="button"><i
+              class="bi bi-search fs-4"></i></button>
+        </form> -->
+        {% if current_user.is_authenticated %}
+        <div class="d-flex justify-content-center align-items-center ">
+          <div class="btn-group dropstart">
+
+            <button name="" data-bs-toggle="dropdown" id="announcementbutton" data-bs-target="#quiz_announce"
+              class="btn border-0 btn-outline-secondary link-warning position-relative me-0 p-2" href="#" role="button">
+
+              <i class="bi bi-bell-fill"></i>
+              <span id="announcementbadge">
+
+              </span>
+              </span>
+
+            </button>
+            <div id="dropdownannc">
+
+            </div>
+          </div>
+
+
+          <div class="nav-link mx-3 fw-bold underline text-warning">
+            {{current_user.first_name |capitalize }} {{ current_user.last_name |capitalize}}
+          </div>
+          <a class="nav-link  btn btn-outline-warning bg-gradient fw-bold  p-2 "
+            href="{{url_for('auth.logout',next=request.url)}}">logout</a>
+
+        </div>
+        {% else %}
+        <ul class="navbar-nav d-flex justify-content-center">
+          <li class="nav-item ">
+            <a class="nav-link  btn btn-outline-warning c bg-gradient fw-bold  "
+              href="{{url_for('auth.login',next=request.url)}}">Login </a>
+          </li>
+          <!-- <li class="nav-item ">
+            <a class="nav-link  btn btn-outline-warning   bg-gradient fw-bold "
+              href="{{url_for('auth.signup',next=request.url)}}"> Register </a>
+          </li> -->
+
+        </ul>
+        {% endif %}
+
+      </div>
+    </div>
+  </nav>
+  <nav class="navbar navbar-expand-lg navbar-dark py-2 " style="background-color: #3F3E45;">
+    <div class="container d-flex justify-content-end">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 d-flex justify-content-center  ">
+          <li class="nav-item mx-5">
+            <a class="nav-link  btn btn-outline-warning  bg-gradient fw-bold  text-white "
+              href="{{url_for('home.index')}}"> <i class="bi bi-house-fill"></i> Home </a>
+          </li>
+          {% if current_user.is_authenticated and current_user.role=='admin' %}
+          <li class="nav-item mx-5">
+            <a class="nav-link  btn btn-outline-warning  bg-gradient fw-bold  text-white "
+              href="{{url_for('admin.index')}}"> <i class="bi bi-file-richtext"></i> Admin Panel </a>
+          </li>
+          {% endif %}
+          {% if current_user.is_authenticated and (current_user.role=='professor' or current_user.role=='student') %}
+          <li class="nav-item mx-5">
+            <a class="nav-link  btn btn-outline-warning  bg-gradient fw-bold  text-white "
+              href="{{url_for('topics.index')}}"> <i class="bi bi-file-richtext"></i> Courses </a>
+          </li>
+          <li class="nav-item mx-5">
+            <a class="nav-link  btn btn-outline-warning  bg-gradient fw-bold  text-white "
+              href="{{url_for('questions.index')}}"> <i class="bi bi-card-list"></i> Quizzes </a>
+          </li>
+          {% endif %}
+
+          {% if current_user.is_authenticated and current_user.role=='professor' %}
+          <li>
+            <a class="nav-link  btn btn-outline-warning  bg-gradient fw-bold mx-5  text-white"
+              href="{{url_for('topics.managment')}}"> <i class="bi bi-card-list"></i> Management </a>
+          </li>
+          {% endif %}
+          <li>
+            <a class="nav-link  btn btn-outline-warning  bg-gradient fw-bold mx-5  text-white">Contact us </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</nav>
+
+{% if current_user.is_authenticated and current_user.role=='student' %}
+<script>
+  $(function () {
+    $.get("/api/quizzes/student_quizzes", {},
+      function (data, textStatus, jqXHR) {
+        if (data.length > 0) {
+          $('#announcementbadge').append(`  <span class="position-absolute  start-100 translate-middle badge rounded-pill bg-danger" style="top:25%;">
+       ${data.length}
+          </span>`);
+          $('#dropdownannc').html(` <div id="quizzes_ann" class=dropdown-menu  dropdown-menu-start" aria-labelledby="triggerId">
+                
+               
+              </div>`);
+          $.each(data, function (indexInArray, valueOfElement) {
+            $('#quizzes_ann').append(`<a class=" dropdown-item"  href="/quizzes/${valueOfElement.id}">You have ${valueOfElement.name} Quiz at ${new Date(valueOfElement.date).toLocaleString()}</a>`);
+          });
+        }
+
+
+      },
+      "json"
+    );
+  });
+</script>
+{% endif %}
